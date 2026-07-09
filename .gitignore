@@ -3,6 +3,7 @@
 **/bin/
 **/obj/
 **/build/
+**/build.zip
 **/dist/
 **/publish/
 **/coverage/
