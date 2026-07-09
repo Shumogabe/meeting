@@ -1,0 +1,157 @@
+<div class="min-h-100 d-flex flex-column">
+
+  <div class="flex-grow-1 ion-padding bg-light">
+    @if(!listData.length){
+    <div class="py-5">
+      <div class="d-flex align-items-center justify-content-center data-not-found">
+        <div>
+          <div class="d-flex justify-content-center">
+            <ion-img class="w-40" src="../../../assets/image/no-documents.svg"></ion-img>
+          </div>
+          <div class="mt-2 text-center">{{'DataNotFound'|translate}}</div>
+        </div>
+      </div>
+    </div>
+    }
+    @else {
+    @for(item of listData; track item){
+    <div class="mb-2">
+      <ng-container [ngTemplateOutlet]="templateItem" [ngTemplateOutletContext]="{ $implicit: item }"></ng-container>
+    </div>
+    }
+    }
+  </div>
+
+  @if(isAddEdit){
+  <ion-footer collapse="fade">
+    <ion-toolbar>
+      <ion-button color="primary" expand="block" (click)="presentModalVoteAdd()">
+        <ion-label>Tạo biểu quyết</ion-label>
+      </ion-button>
+    </ion-toolbar>
+  </ion-footer>
+  }
+</div>
+
+<ion-modal #modalConfirmDelete class="ion-modal-small">
+  <ng-template>
+    <div class="p-4">
+      <div class="text-center">
+        <h4 class="mb-2">Xóa biểu quyết</h4>
+        <p class="mb-4 fs-3">Bạn có chắc muốn xóa mục này?</p>
+      </div>
+      <div class="row">
+        <div class="col-6 pr-1">
+          <ion-button color="primary" fill="outline" expand="block" (click)="modalConfirmDelete?.dismiss();">{{'Cancel'|translate}}</ion-button>
+        </div>
+        <div class="col-6 pl-1">
+          <ion-button color="danger" expand="block" (click)="confirmDelete(modalConfirmDelete)">{{'Delete'|translate}}</ion-button>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</ion-modal>
+
+<ng-template #templateItem let-item>
+  <div class="card-vote" [attr.color]="ColorStatusVote(item.status)">
+    <div>
+      <div class="cursor-pointer" (click)="presentModalVoteDetail(item.id)">
+        <div class="d-flex align-items-start justify-content-between">
+          <!-- <div class="d-flex align-items-center">
+          @if(item.type){
+          <ion-icon class="fs-24 mr-2" color="primary" name="square-outline"></ion-icon>
+          <ion-text color="primary">Chọn nhiều</ion-text>
+          }
+          @else {
+          <ion-icon class="fs-24 mr-2" color="primary" name="ellipse-outline"></ion-icon>
+          <ion-text color="primary">Chọn một</ion-text>
+          }
+        </div> -->
+          <div>
+            <b>{{item.title}}</b>
+          </div>
+
+          @if(item.status){
+          <ion-chip color="success" class="ion-no-margin fs-10 min-h-20 py-0 no-opacity">
+            <ion-label>Đã duyệt</ion-label>
+          </ion-chip>
+          }
+          @else {
+          <ion-chip color="warning" class="ion-no-margin fs-10 min-h-20 py-0 no-opacity">
+            <ion-label>Chưa duyệt</ion-label>
+          </ion-chip>
+          }
+        </div>
+
+        <div class="mt-2">
+          <ul class="my-0">
+            @for(child of item.meetingvoted||[]; track child){
+            <li class="mb-2">
+              <ion-note class="text-wrap" color="medium" [innerHTML]="child.title"></ion-note>
+            </li>
+            }
+          </ul>
+        </div>
+      </div>
+
+      <hr class="border-top mt-3 mb-2" />
+
+      <!-- <div>
+        <div>
+          <b>{{item.title}}</b>
+        </div>
+        <div>
+          @if(item.type){
+          <div>
+            @for(child of item.meetingvoted||[]; track child){
+            <div>
+              <ion-checkbox mode="md" labelPlacement="end" [value]="child.id">{{child.title}}</ion-checkbox>
+            </div>
+            }
+          </div>
+          }
+          @else {
+          <ion-radio-group>
+            @for(child of item.meetingvoted||[]; track child){
+            <div>
+              <ion-radio mode="md" labelPlacement="end" [value]="child.id">{{child.title}}</ion-radio>
+            </div>
+            }
+          </ion-radio-group>
+          }
+        </div>
+      </div>
+
+      <hr class="border-top my-2" /> -->
+
+      <div class="d-flex align-items-center justify-content-end mt-2">
+        @if(Role.checkRole(userRoles,Role.APPROVE) && !isEnd){
+        @if(item.status){
+        <ion-button class="flex-grow-1" size="small" color="primary" fill="outline" (click)="confirmVoteCancel(item.id)">
+          <ion-label>Hủy xác nhận</ion-label>
+        </ion-button>
+        }
+        @else{
+        <ion-button class="flex-grow-1" size="small" color="primary" (click)="confirmVoteOk(item.id)">
+          <ion-label>Xác nhận</ion-label>
+        </ion-button>
+        }
+        }
+
+        @if(isAddEdit){
+        @if(item.status){
+
+        }
+        @else{
+        <ion-button class="min-w-120" size="small" color="medium" fill="outline" (click)="presentModalVoteUpdate(item.id)">
+          <ion-label>Chỉnh sửa</ion-label>
+        </ion-button>
+        <ion-button class="min-w-80" size="small" color="danger" fill="outline" (click)="selectedId=item.id;modalConfirmDelete?.present()">
+          <ion-label>Xóa</ion-label>
+        </ion-button>
+        }
+        }
+      </div>
+    </div>
+  </div>
+</ng-template>

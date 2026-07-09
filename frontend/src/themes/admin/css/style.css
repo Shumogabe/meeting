@@ -1,0 +1,189 @@
+.admin .site-name {
+    margin: 0 !important;
+    padding: 0 20px 0 0 !important;
+}
+.admin .site-name a{
+    font-size: x-large;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin: 0 !important;
+    padding: 0 !important;
+    color: #ffffff !important;
+}
+.admin .main-header {
+    margin-left: 0 !important;
+    border: 0 !important;
+    background: #444444;
+    position: fixed;
+    width: 100%;
+}
+.admin .main-sidebar {
+    margin-top: 56px;
+}
+.admin .content-wrapper{
+    padding-top: 45px;
+}
+.admin .content-header h1 {
+    text-align: left;
+}
+.admin .nav-sidebar>.nav-item {
+    text-align: left;
+}
+.admin .main-sidebar{
+    z-index: 0;
+}
+.admin .main-footer {
+    border-top: 0 !important;
+}
+.admin .navbar-light .navbar-nav .nav-link {
+    color: #ffffff;
+}
+.admin .navbar-light .navbar-nav .nav-link:hover, .navbar-light .navbar-nav .nav-link:visited {
+    /* color: #ffffff; 
+    color: #999999; */
+}
+#root > div.admin > nav > ul:nth-child(1) > li.nav-item.dropdown.show > div > a:hover{
+    background-color: #0050A6;
+    
+}
+.admin .dropdown-menu {
+    background-color: #555555;
+    border: 1px solid #555555;
+}
+.admin .btn-outline-secondary {
+    border-color: #ced4da;
+}
+.admin .ReactModal__Overlay{
+    background: #666666 !important;
+    z-index: 10000;
+    opacity: 1;
+}
+.admin .ReactModal__Content {
+    background: none !important;
+    border: none !important;
+}
+.admin .ReactModal__Content .card {
+    margin: 0 auto;
+}
+.admin .ReactModal__Content .btn{
+    margin: 2px;
+}
+.admin .treeview, .treeview ul{
+    list-style: none;
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+.admin .treeview li{
+    padding: 0;
+    border: 0;
+    margin: 0;
+}
+.admin .treeview .name-col{
+    padding-left: 15px;
+    width: 80%;
+    float: left;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+.admin .treeview .option-col{
+    width: 20%;
+    float: right;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+.admin .treeview li.heading{
+    background: #ced4da;
+}
+.admin .treeview li li a{
+    margin-left: 20px;
+}
+.admin .treeview a, .treeview a::after{
+    color: #333333;
+}
+/*Category*/
+.admin .category-form{
+    width: 1024px;
+}
+/*tabs*/
+.admin .tabs-dark-blue{
+
+}
+
+.admin .tabs-dark-blue .nav-link {
+    /* color: #30648f; */
+}
+/*card*/
+.admin .card-admin .nav-tabs .active {
+    color: #ffffff !important;
+}
+.admin .card-admin .nav-tabs .nav-link {
+    color: #333333;
+}
+.admin .card-title{
+    padding: 10px;
+}
+.admin .card-footer button{
+    margin: 2px;
+}
+.admin .breadcrumb{
+    border-left: 0 !important;
+    font-size: 18px;
+}
+.admin .page-name{
+    font-size: 24px;
+}
+.admin .admin .bordered{
+    border: 1px solid #999999;
+}
+.admin .display{
+    display: block !important;
+}
+.admin .control-sidebar{
+    content: "";
+    position: fixed;
+    display: none;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10000;
+    height: 100vh;    
+    width: 450px;
+}
+.admin .tab-setting .select-group{
+    width: 60%;
+}
+.admin .alert{
+    margin-bottom: 0;
+}
+#root > div.admin > nav > ul:nth-child(1) > li.nav-item.dropdown.show > div > a{
+    color: #ffffff;
+}
+#root > div.admin > nav > ul.navbar-nav.ml-auto > li:nth-child(4) > a{
+    display: none;
+}
+/* #root > div.admin > aside{
+    display: nonee;
+}
+#root > div.admin > div,
+#root > div.admin > footer{
+    margin-left: unsets;
+} */
+#root > div.admin > aside > div > div.os-content-glue{
+    width: 245px !important;
+}
+#root > div.admin > aside > div > div.os-padding > div > div{
+    padding: 0 !important;
+}
+#root > div.admin > div > section > div > ul > li > a{
+    cursor: pointer;
+}
+#root > div.admin > nav > ul.navbar-nav.ml-auto > li.nav-item.dropdown.show > div > a{
+    color: #ffffff;
+}
+#root > div.admin > nav > ul.navbar-nav.ml-auto > li.nav-item.dropdown.show > div > a:hover{
+    background-color: #0050A6;
+}
+#root > div.admin > aside > div > div.os-padding > div > div > nav{
+    margin-left: -13px;
+}

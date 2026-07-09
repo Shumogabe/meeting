@@ -1,0 +1,46 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="primary">
+    @if(!isAccepted){
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/" text=""></ion-back-button>
+    </ion-buttons>
+    }
+    <ion-title>{{roomData?.title}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+@if(roomData){
+@if(isAccepted){
+<ion-content mode="md" [scrollX]="false" [scrollY]="false">
+  <app-jitsi-meet [roomData]="roomData" [userData]="userData"></app-jitsi-meet>
+</ion-content>
+}
+@else {
+<ion-content>
+  <div class="ion-padding">
+    @if(!isPassedPwd){
+    <div>
+      <div class="fw-600 fs-16 mb-1">Mật khẩu <ion-text color="danger">*</ion-text></div>
+      <ion-input #inputRoomPwd mode="md" fill="outline" clear-input="true" placeholder="Nhập mật khẩu phòng họp" (ionChange)="changeRoomPwd($event)" (keyup.enter)="checkAccepted()">
+      </ion-input>
+    </div>
+    }
+    @if(!isPassedAuth){
+    <div class="mt-4">
+      <div class="fw-600 fs-16 mb-1">Tên hiển thị <ion-text color="danger">*</ion-text></div>
+      <ion-input mode="md" fill="outline" clear-input="true" placeholder="Nhập tên hiển thị" minlength="6" maxlength="100" [value]="userData.name" (ionChange)="changeUserName($event)"></ion-input>
+    </div>
+    <div class="mt-4">
+      <div class="fw-600 fs-16 mb-1">Email <ion-text color="danger">*</ion-text></div>
+      <ion-input mode="md" fill="outline" clear-input="true" placeholder="Nhập email" minlength="6" maxlength="100" [value]="userData.email" (ionChange)="changeUserEmail($event)"></ion-input>
+    </div>
+    }
+    <div class="mt-3">
+      <ion-button class="ion-no-margin" color="primary" expand="block" (click)="checkAccepted()">
+        <ion-label>Tham gia</ion-label>
+      </ion-button>
+    </div>
+  </div>
+</ion-content>
+}
+}

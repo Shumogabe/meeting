@@ -1,0 +1,15 @@
+.section.support-area .container{
+    position: relative;
+    z-index: 1;
+}
+.img-support img{
+    position: absolute;
+    top: 60%;
+    left: 60%;
+    transform: translate(-50%, -50%);
+}
+@media only screen and (max-width: 768px) {    
+    .img-support img {        
+        visibility: hidden;
+    }
+}

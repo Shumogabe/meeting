@@ -1,0 +1,14 @@
+@media only screen and (max-width: 1186px) {
+    #root div div div div.section.join-room-area div.join-submit div.row div.col-md-3{
+        width: 33%;
+        margin: 0 auto;
+    }
+    #root div div div div.section.join-room-area div.join-submit div.row div.col-md-5{
+        width: 70%;
+        margin: 0 auto;
+    }
+    #root div div div div.section.join-room-area div.join-submit div div.col-md-3{
+        width: 36%;
+        margin: 0 auto;
+    }
+}

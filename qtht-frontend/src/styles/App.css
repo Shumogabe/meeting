@@ -1,0 +1,17 @@
+body {
+    font-family: 'Segoe', 'Segoe UI', 'Arial', 'sans-serif';
+}
+p {
+    padding: 0px;
+    margin: 0px;
+}
+a {
+    cursor: pointer;
+}
+legend {
+    width: 0;
+}
+.text-chitiet {
+    cursor: pointer;
+    color: #057db2;
+}

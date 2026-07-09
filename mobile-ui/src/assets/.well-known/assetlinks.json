@@ -1,0 +1,14 @@
+[
+    {
+        "relation": [
+            "delegate_permission/common.handle_all_urls"
+        ],
+        "target": {
+            "namespace": "android_app",
+            "package_name": "vn.gov.monre.meeting",
+            "sha256_cert_fingerprints": [
+                "97:FF:C6:20:77:7D:EA:BD:E8:4A:66:5E:B1:5D:53:D1:10:C0:85:96:B7:C3:95:47:EA:D5:D3:5A:B3:E8:C3:0F"
+            ]
+        }
+    }
+]

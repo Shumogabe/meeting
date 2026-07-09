@@ -1,0 +1,92 @@
+.ant-menu-item-active::after,
+.ant-menu-item-active::before {
+    border-bottom-width: 0px !important;
+    border-bottom-color: unset !important;
+}
+
+.ant-menu-item-active::after,
+.ant-menu-item-active::after,
+.ant-menu-submenu-active::after,
+.ant-menu-submenu-active::after,
+.ant-menu-item-open::after,
+.ant-menu-item-open::after,
+.ant-menu-submenu-open::after,
+.ant-menu-submenu-open::after,
+.ant-menu-item:hover::after,
+.ant-menu-overflow-item::after,
+.ant-menu-item::after {
+    border-bottom-width: 0px !important;
+    border-bottom-color: unset !important;
+    border-bottom: 0px
+}
+
+.ant-layout-sider-trigger {
+    background-color: #0E4D57 !important;
+}
+
+.ant-space-item section aside .ant-layout-sider-children ul li.ant-menu-submenu.ant-menu-submenu-inline div[data-menu-id$="User"] {
+    border-bottom: 3px solid #ffffff;
+    height: 64px;
+    line-height: 64px;
+}
+
+.ant-menu-dark .ant-menu-item-selected,
+.ant-menu-dark .ant-menu .ant-menu-item-selected {
+    background-color: #0E4D57 !important;
+}
+
+.ant-menu.ant-menu-sub.ant-menu-inline {
+    background-color: #1f93a4 !important;
+}
+
+.ant-tabs .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn,
+.ant-tabs .ant-tabs-tab.ant-tabs-tab-active {
+    color: #ffffff;
+    background-color: #1f93a4;
+}
+
+#root>div>div>section>aside>div.ant-layout-sider-children>ul>li:not(:first-child)>div {
+    background-color: #318c9a;
+}
+
+label {
+    margin-bottom: 0;
+}
+
+.ant-input-group-addon:last-child {
+    width: auto;
+}
+
+.ant-table-thead>tr>th {
+    font-weight: bolder !important;
+}
+
+.ant-modal-header {
+    border-bottom: 2px solid #2f353a;
+    padding-bottom: 10px;
+}
+
+.ant-modal-close-x {
+    color: red;
+}
+
+.site-tree-search-value {
+    color: #f50;
+}
+
+@media only screen and (max-width: 1024px) {
+    .card {
+        display: block;
+    }
+
+    #root>div>div>section>section>main>section>div>div>div.card-header.border-0 {
+        margin-top: 80px;
+    }
+
+    #root>div>div>section>section>main>section>div>div:nth-child(2)>div.card-header.border-0 {
+        margin-top: unset;
+    }
+    /* #root > div > div > section > section > main > section{
+        margin-top: 3rem !important;
+    } */
+}

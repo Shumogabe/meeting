@@ -1,0 +1,61 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="light">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/" text=""></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="light">
+
+  <div class="min-h-100 w-100 d-flex flex-column">
+
+    <div class="text-center pt-3 pb-4">
+      <div class="d-flex justify-content-center">
+        <ion-img src="../../../assets/image/logo-icon.png"></ion-img>
+      </div>
+      <div class="mt-2 fs-32 fw-900"><ion-text color="primary">MONRE MEETING</ion-text></div>
+      <div class="mt-0 mb-4 fs-20">Nền tảng họp trực tuyến</div>
+    </div>
+
+    <div class="flex-grow-1 d-flex justify-content-center area-white">
+
+      <div class="w-100 mw-360 px-4">
+        <div class="mb-4">
+          <div class="fw-500 fs-14 mb-2">Tên đăng nhập</div>
+          <ion-input mode="md" fill="outline" placeholder="Nhập tên đăng nhập" [value]="dataForm.username" (ionChange)="changeUserName($event)"></ion-input>
+        </div>
+
+        <div class="mb-4">
+          <div class="fw-500 fs-14 mb-2">Mật khẩu</div>
+          <ion-input type="password" mode="md" fill="outline" placeholder="Nhập mật khẩu" [value]="dataForm.password" (ionChange)="changePassword($event)" (keyup.enter)="signIn()">
+            <ion-input-password-toggle slot="end"></ion-input-password-toggle>
+          </ion-input>
+        </div>
+
+        <div class="mb-4">
+          <ion-checkbox labelPlacement="end" [checked]="dataForm.rememberme" (ionChange)="changeRemember($event)">Lưu tài khoản</ion-checkbox>
+        </div>
+
+        <ion-button class="ion-no-margin" color="primary" expand="block" (click)="signIn()" [disabled]="signIn_disabled">
+          <ion-label>{{'SignIn'|translate}}</ion-label>
+        </ion-button>
+
+        <div class="d-flex align-items-center mt-5 mb-4">
+          <div class="flex-grow-1 border-top"></div>
+          <ion-text color="primary" class="px-2 fs-14">Hoặc xác nhận qua hệ thống <b>VNeID</b></ion-text>
+          <div class="flex-grow-1 border-top"></div>
+        </div>
+
+        <div class="d-flex justify-content-center mb-5">
+          <ion-button class="ion-no-padding ion-no-margin" color="transparent" shape="round" (click)="authSSO_VNeID()">
+            <ion-icon class="fs-56" src="../../../assets/icon/vneid.svg"></ion-icon>
+          </ion-button>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+</ion-content>

@@ -1,0 +1,61 @@
+#thiết lập các services(containers) muốn cài đặt và chạy.
+services:
+  monre_cloud_frontend:
+    #chỉ ra image được sử dụng trong lúc tạo ra container.
+    image: imageName
+    #dùng để tạo container.
+    build:
+      context: .
+      target: dev-envs
+    container_name: monre_cloud_backend
+    #environment: thiết lập biến môi trường ( thường sử dụng trong lúc config các thông số của db).
+    #depends_on: chỉ ra sự phụ thuộc. Tức là services nào phải được cài đặt và chạy trước thì service được config tại đó mới được chạy.
+    #thiết lập ports chạy tại máy host và trong container.
+    ports:
+      - "80:3000"
+      - "3000:3000"
+    #dùng để mount hai thư mục trên host và container với nhau.
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    #tự động khởi chạy khi container bị tắt.
+    restart: always
+
+  monre_cloud_backend:
+    #chỉ ra image được sử dụng trong lúc tạo ra container.
+    image: imageName
+    #dùng để tạo container.
+    build:
+      context: .
+      target: dev-envs
+    container_name: monre_cloud_backend
+    #environment: thiết lập biến môi trường ( thường sử dụng trong lúc config các thông số của db).
+    #depends_on: chỉ ra sự phụ thuộc. Tức là services nào phải được cài đặt và chạy trước thì service được config tại đó mới được chạy.
+    #thiết lập ports chạy tại máy host và trong container.
+    ports:
+      - "80:3000"
+      - "3000:3000"
+    #dùng để mount hai thư mục trên host và container với nhau.
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    #tự động khởi chạy khi container bị tắt.
+    restart: always
+
+  csht_qldtdm:
+    #chỉ ra image được sử dụng trong lúc tạo ra container.
+    image: imageName
+    #dùng để tạo container.
+    build:
+      context: .
+      target: dev-envs
+    container_name: monre_cloud_backend
+    #environment: thiết lập biến môi trường ( thường sử dụng trong lúc config các thông số của db).
+    #depends_on: chỉ ra sự phụ thuộc. Tức là services nào phải được cài đặt và chạy trước thì service được config tại đó mới được chạy.
+    #thiết lập ports chạy tại máy host và trong container.
+    ports:
+      - "80:3000"
+      - "3000:3000"
+    #dùng để mount hai thư mục trên host và container với nhau.
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    #tự động khởi chạy khi container bị tắt.
+    restart: always

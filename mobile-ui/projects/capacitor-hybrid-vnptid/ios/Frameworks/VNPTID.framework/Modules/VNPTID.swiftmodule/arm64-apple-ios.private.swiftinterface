@@ -1,0 +1,1247 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.10 (swiftlang-5.10.0.13 clang-1500.3.9.4)
+// swift-module-flags: -target arm64-apple-ios10.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-bare-slash-regex -module-name VNPTID
+import Accelerate
+import Combine
+import Darwin
+import Dispatch
+import FSCalendar
+import Foundation
+import LocalAuthentication
+import MobileCoreServices
+import SDWebImage
+import SVProgressHUD
+import Security
+import Swift
+import SystemConfiguration
+import UIKit
+@_exported import VNPTID
+import WebKit
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+final public class VNPTIDSHA1 {
+  public init()
+  final public func calculate(for bytes: Swift.Array<Swift.UInt8>) -> Swift.Array<Swift.UInt8>
+  @objc deinit
+}
+extension VNPTID.VNPTIDSHA1 : VNPTID.Updatable {
+  @discardableResult
+  final public func update(withBytes bytes: Swift.ArraySlice<Swift.UInt8>, isLast: Swift.Bool = false) throws -> Swift.Array<Swift.UInt8>
+}
+final public class VNPTIDMD5 {
+  public init()
+  final public func calculate(for bytes: Swift.Array<Swift.UInt8>) -> Swift.Array<Swift.UInt8>
+  @objc deinit
+}
+extension VNPTID.VNPTIDMD5 : VNPTID.Updatable {
+  final public func update(withBytes bytes: Swift.ArraySlice<Swift.UInt8>, isLast: Swift.Bool = false) throws -> Swift.Array<Swift.UInt8>
+}
+public struct VNPTIDKeychainSwiftConstants {
+  public static var accessGroup: Swift.String {
+    get
+  }
+  public static var accessible: Swift.String {
+    get
+  }
+  public static var attrAccount: Swift.String {
+    get
+  }
+  public static var attrSynchronizable: Swift.String {
+    get
+  }
+  public static var klass: Swift.String {
+    get
+  }
+  public static var matchLimit: Swift.String {
+    get
+  }
+  public static var returnData: Swift.String {
+    get
+  }
+  public static var valueData: Swift.String {
+    get
+  }
+  public static var returnReference: Swift.String {
+    get
+  }
+  public static var returnAttributes: Swift.String {
+    get
+  }
+  public static var secMatchLimitAll: Swift.String {
+    get
+  }
+}
+@objc public protocol VnptIdDelegate {
+  @objc func callBackUserInfoDelegate(_ INFOR_USER_RESULT: Swift.String)
+  @objc func callBackIdTokenDelegate(_ ID_TOKEN: Swift.String)
+  @objc func callBackAccessTokenDelegate(_ ACSSESS_TOKEN: Swift.String)
+  @objc func callBackRefreshTokenDelegate(_ GET_REFRESH_TOKEN_RESULT: Swift.String)
+  @objc func callBackOtpDelegate(_ OPT: Swift.String)
+  @objc func callBackMappingAccount(_INFO_MAPPING: Swift.String)
+  @objc func callBackWhenLogout(_LOGOUT_SUCCESS: Swift.Bool)
+  @objc optional func dissmissSDK(_DISMISS: Swift.Bool)
+}
+@_inheritsConvenienceInitializers @objc public class ManangerVnptId : ObjectiveC.NSObject {
+  @objc public class var shareIns: VNPTID.ManangerVnptId {
+    @objc get
+  }
+  public func dispose()
+  @objc weak public var delegate: (any VNPTID.VnptIdDelegate)?
+  @objc public var AUTHOR_USER_RESULT: Swift.String
+  @objc public var RELOGIN: Swift.Bool
+  @objc public var GET_USER_INFO: Swift.Bool
+  @objc public var IS_HIDDEN_BACK_LOGIN: Swift.Bool
+  @objc public var GET_ID_TOKEN: Swift.Bool
+  @objc public var GET_ACCESS_TOKEN: Swift.Bool
+  @objc public var GET_REFRESH_TOKEN: Swift.Bool
+  @objc public var GOTO_SDK_USER_PROFILE: Swift.Bool
+  @objc public var CLIENT_INFO: Swift.String
+  @objc public var REFRESH_TOKEN_SUPER: Swift.String
+  @objc public var ID_TOKEN_SUPER: Swift.String
+  @objc public var COOKIE_OTP: Swift.String
+  @objc public var GOTO_AUTHEN_METHOD: Swift.String
+  @objc public var GOTO_MAPPING_ACCOUNT: Swift.String
+  public func callBackUserInfo()
+  public func callBackIdToken()
+  public func callBackAccessToken()
+  public func callBackRefreshToken()
+  public func callBackOtp(cookiesOtp: Swift.String)
+  public func callBackMapping(infoMapping: Swift.String)
+  public func dismiss()
+  @objc public func logOut()
+  @objc override dynamic public init()
+  @objc deinit
+}
+public struct VNPTIDHKDF {
+  public enum Error : Swift.Error {
+    case invalidInput
+    case derivedKeyTooLong
+    public static func == (a: VNPTID.VNPTIDHKDF.Error, b: VNPTID.VNPTIDHKDF.Error) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public init(password: Swift.Array<Swift.UInt8>, salt: Swift.Array<Swift.UInt8>? = nil, info: Swift.Array<Swift.UInt8>? = nil, keyLength: Swift.Int? = nil, variant: VNPTID.VNPTIDHMAC.Variant = .sha256) throws
+  public func calculate() throws -> Swift.Array<Swift.UInt8>
+}
+public struct VNPTIDCTR {
+  public enum Error : Swift.Error {
+    case invalidInitializationVector
+    public static func == (a: VNPTID.VNPTIDCTR.Error, b: VNPTID.VNPTIDCTR.Error) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public let options: VNPTID.VNPTIDBlockModeOption
+  public init(iv: Swift.Array<Swift.UInt8>, counter: Swift.Int = 0)
+  public func worker(blockSize: Swift.Int, VNPTIDCipherOperation: @escaping VNPTID.VNPTIDCipherOperationOnBlock) throws -> any VNPTID.VNPTIDCipherModeWorker
+}
+final public class VNPTIDSHA3 {
+  final public let blockSize: Swift.Int
+  final public let digestLength: Swift.Int
+  final public let markByte: Swift.UInt8
+  public enum Variant {
+    case sha224, sha256, sha384, sha512, keccak224, keccak256, keccak384, keccak512
+    public var outputLength: Swift.Int {
+      get
+    }
+    public static func == (a: VNPTID.VNPTIDSHA3.Variant, b: VNPTID.VNPTIDSHA3.Variant) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public init(variant: VNPTID.VNPTIDSHA3.Variant)
+  final public func calculate(for bytes: Swift.Array<Swift.UInt8>) -> Swift.Array<Swift.UInt8>
+  @objc deinit
+}
+extension VNPTID.VNPTIDSHA3 : VNPTID.Updatable {
+  final public func update(withBytes bytes: Swift.ArraySlice<Swift.UInt8>, isLast: Swift.Bool = false) throws -> Swift.Array<Swift.UInt8>
+}
+@available(*, renamed: "VNPTIDDigest")
+public typealias Hash = VNPTID.VNPTIDDigest
+public struct VNPTIDDigest {
+  public static func md5(_ bytes: Swift.Array<Swift.UInt8>) -> Swift.Array<Swift.UInt8>
+  public static func sha1(_ bytes: Swift.Array<Swift.UInt8>) -> Swift.Array<Swift.UInt8>
+  public static func sha224(_ bytes: Swift.Array<Swift.UInt8>) -> Swift.Array<Swift.UInt8>
+  public static func sha256(_ bytes: Swift.Array<Swift.UInt8>) -> Swift.Array<Swift.UInt8>
+  public static func sha384(_ bytes: Swift.Array<Swift.UInt8>) -> Swift.Array<Swift.UInt8>
+  public static func sha512(_ bytes: Swift.Array<Swift.UInt8>) -> Swift.Array<Swift.UInt8>
+  public static func sha2(_ bytes: Swift.Array<Swift.UInt8>, variant: VNPTID.VNPTIDSHA2.Variant) -> Swift.Array<Swift.UInt8>
+  public static func sha3(_ bytes: Swift.Array<Swift.UInt8>, variant: VNPTID.VNPTIDSHA3.Variant) -> Swift.Array<Swift.UInt8>
+}
+@_hasMissingDesignatedInitializers final public class VNPTIDAEADChaCha20Poly1305 : VNPTID.VNPTIDAEAD {
+  public static let kLen: Swift.Int
+  public static var ivRange: Swift.Range<Swift.Int>
+  public static func encrypt(_ plainText: Swift.Array<Swift.UInt8>, key: Swift.Array<Swift.UInt8>, iv: Swift.Array<Swift.UInt8>, authenticationHeader: Swift.Array<Swift.UInt8>) throws -> (VNPTIDCipherText: Swift.Array<Swift.UInt8>, authenticationTag: Swift.Array<Swift.UInt8>)
+  public static func decrypt(_ VNPTIDCipherText: Swift.Array<Swift.UInt8>, key: Swift.Array<Swift.UInt8>, iv: Swift.Array<Swift.UInt8>, authenticationHeader: Swift.Array<Swift.UInt8>, authenticationTag: Swift.Array<Swift.UInt8>) throws -> (plainText: Swift.Array<Swift.UInt8>, success: Swift.Bool)
+  @objc deinit
+}
+public enum VNPTIDBit : Swift.Int {
+  case zero
+  case one
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public protocol VNPTIDAuthenticator {
+  func authenticate(_ bytes: Swift.Array<Swift.UInt8>) throws -> Swift.Array<Swift.UInt8>
+}
+extension VNPTID.VNPTIDAES : VNPTID.VNPTIDCryptors {
+  final public func makeEncryptor() throws -> any VNPTID.Updatable & VNPTID.VNPTIDCryptor
+  final public func makeDecryptor() throws -> any VNPTID.Updatable & VNPTID.VNPTIDCryptor
+}
+final public class VNPTIDAES {
+  public enum Error : Swift.Error {
+    case invalidKeySize
+    case dataPaddingRequired
+    case invalidData
+    public static func == (a: VNPTID.VNPTIDAES.Error, b: VNPTID.VNPTIDAES.Error) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public enum Variant : Swift.Int {
+    case VNPTIDAES128, VNPTIDAES192, VNPTIDAES256
+    public init?(rawValue: Swift.Int)
+    public typealias RawValue = Swift.Int
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+  public static let blockSize: Swift.Int
+  final public let keySize: Swift.Int
+  final public let variant: VNPTID.VNPTIDAES.Variant
+  public init(key: Swift.Array<Swift.UInt8>, blockMode: any VNPTID.VNPTIDBlockMode, padding: VNPTID.VNPTIDPadding = .pkcs7) throws
+  @objc deinit
+}
+extension VNPTID.VNPTIDAES : VNPTID.VNPTIDCipher {
+  final public func encrypt(_ bytes: Swift.ArraySlice<Swift.UInt8>) throws -> Swift.Array<Swift.UInt8>
+  final public func decrypt(_ bytes: Swift.ArraySlice<Swift.UInt8>) throws -> Swift.Array<Swift.UInt8>
+}
+public struct VNPTIDECB : VNPTID.VNPTIDBlockMode {
+  public let options: VNPTID.VNPTIDBlockModeOption
+  public init()
+  public func worker(blockSize: Swift.Int, VNPTIDCipherOperation: @escaping VNPTID.VNPTIDCipherOperationOnBlock) throws -> any VNPTID.VNPTIDCipherModeWorker
+}
+public protocol VNPTIDAEAD {
+  static var kLen: Swift.Int { get }
+  static var ivRange: Swift.Range<Swift.Int> { get }
+}
+extension Swift.String {
+  public var bytes: Swift.Array<Swift.UInt8> {
+    get
+  }
+  public func md5() -> Swift.String
+  public func sha1() -> Swift.String
+  public func sha224() -> Swift.String
+  public func sha256() -> Swift.String
+  public func sha384() -> Swift.String
+  public func sha512() -> Swift.String
+  public func sha3(_ variant: VNPTID.VNPTIDSHA3.Variant) -> Swift.String
+  public func crc32(seed: Swift.UInt32? = nil, reflect: Swift.Bool = true) -> Swift.String
+  public func crc32c(seed: Swift.UInt32? = nil, reflect: Swift.Bool = true) -> Swift.String
+  public func crc16(seed: Swift.UInt16? = nil) -> Swift.String
+  public func encrypt(VNPTIDCipher: any VNPTID.VNPTIDCipher) throws -> Swift.String
+  public func encryptToBase64(VNPTIDCipher: any VNPTID.VNPTIDCipher) throws -> Swift.String?
+  public func authenticate<A>(with authenticator: A) throws -> Swift.String where A : VNPTID.VNPTIDAuthenticator
+}
+@_inheritsConvenienceInitializers @objc @_Concurrency.MainActor(unsafe) public class VnptIdNaviVc : UIKit.UINavigationController {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidLoad()
+  @available(iOS 5.0, *)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(navigationBarClass: Swift.AnyClass?, toolbarClass: Swift.AnyClass?)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(rootViewController: UIKit.UIViewController)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @objc deinit
+}
+extension VNPTID.VnptIdNaviVc {
+  @objc @_Concurrency.MainActor(unsafe) public static func naviController() -> VNPTID.VnptIdNaviVc
+}
+final public class VNPTIDPoly1305 : VNPTID.VNPTIDAuthenticator {
+  public enum Error : Swift.Error {
+    case authenticateError
+    public static func == (a: VNPTID.VNPTIDPoly1305.Error, b: VNPTID.VNPTIDPoly1305.Error) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public static let blockSize: Swift.Int
+  public init(key: Swift.Array<Swift.UInt8>)
+  final public func authenticate(_ bytes: Swift.Array<Swift.UInt8>) throws -> Swift.Array<Swift.UInt8>
+  @objc deinit
+}
+public protocol VNPTIDCipherModeWorker {
+  var VNPTIDCipherOperation: VNPTID.VNPTIDCipherOperationOnBlock { get }
+  var additionalBufferSize: Swift.Int { get }
+  mutating func encrypt(block plaintext: Swift.ArraySlice<Swift.UInt8>) -> Swift.Array<Swift.UInt8>
+  mutating func decrypt(block VNPTIDCiphertext: Swift.ArraySlice<Swift.UInt8>) -> Swift.Array<Swift.UInt8>
+}
+public protocol BlockModeWorker : VNPTID.VNPTIDCipherModeWorker {
+  var blockSize: Swift.Int { get }
+}
+public protocol CounterModeWorker : VNPTID.VNPTIDCipherModeWorker {
+  associatedtype Counter
+  var counter: Self.Counter { get set }
+}
+public protocol SeekableModeWorker : VNPTID.VNPTIDCipherModeWorker {
+  mutating func seek(to position: Swift.Int) throws
+}
+public protocol StreamModeWorker : VNPTID.VNPTIDCipherModeWorker {
+}
+public protocol FinalizingEncryptModeWorker : VNPTID.VNPTIDCipherModeWorker {
+  mutating func finalize(encrypt VNPTIDCiphertext: Swift.ArraySlice<Swift.UInt8>) throws -> Swift.ArraySlice<Swift.UInt8>
+}
+public protocol FinalizingDecryptModeWorker : VNPTID.VNPTIDCipherModeWorker {
+  @discardableResult
+  mutating func willDecryptLast(bytes VNPTIDCiphertext: Swift.ArraySlice<Swift.UInt8>) throws -> Swift.ArraySlice<Swift.UInt8>
+  mutating func didDecryptLast(bytes plaintext: Swift.ArraySlice<Swift.UInt8>) throws -> Swift.ArraySlice<Swift.UInt8>
+  mutating func finalize(decrypt plaintext: Swift.ArraySlice<Swift.UInt8>) throws -> Swift.ArraySlice<Swift.UInt8>
+}
+extension VNPTID.VNPTIDChaCha20 {
+  convenience public init(key: Swift.String, iv: Swift.String) throws
+}
+public protocol _UInt8Type {
+}
+extension Swift.UInt8 : VNPTID._UInt8Type {
+}
+extension Swift.UInt8 {
+  public func bits() -> [VNPTID.VNPTIDBit]
+  public func bits() -> Swift.String
+}
+@_hasMissingDesignatedInitializers public class Reach {
+  @objc deinit
+}
+public protocol Updatable {
+  mutating func update(withBytes bytes: Swift.ArraySlice<Swift.UInt8>, isLast: Swift.Bool) throws -> Swift.Array<Swift.UInt8>
+  mutating func update(withBytes bytes: Swift.ArraySlice<Swift.UInt8>, isLast: Swift.Bool, output: (_ bytes: Swift.Array<Swift.UInt8>) -> Swift.Void) throws
+}
+extension VNPTID.Updatable {
+  public mutating func update(withBytes bytes: Swift.ArraySlice<Swift.UInt8>, isLast: Swift.Bool = false, output: (_ bytes: Swift.Array<Swift.UInt8>) -> Swift.Void) throws
+  public mutating func update(withBytes bytes: Swift.ArraySlice<Swift.UInt8>, isLast: Swift.Bool = false) throws -> Swift.Array<Swift.UInt8>
+  public mutating func update(withBytes bytes: Swift.Array<Swift.UInt8>, isLast: Swift.Bool = false) throws -> Swift.Array<Swift.UInt8>
+  public mutating func update(withBytes bytes: Swift.Array<Swift.UInt8>, isLast: Swift.Bool = false, output: (_ bytes: Swift.Array<Swift.UInt8>) -> Swift.Void) throws
+  public mutating func finish(withBytes bytes: Swift.ArraySlice<Swift.UInt8>) throws -> Swift.Array<Swift.UInt8>
+  public mutating func finish(withBytes bytes: Swift.Array<Swift.UInt8>) throws -> Swift.Array<Swift.UInt8>
+  public mutating func finish() throws -> Swift.Array<Swift.UInt8>
+  public mutating func finish(withBytes bytes: Swift.ArraySlice<Swift.UInt8>, output: (_ bytes: Swift.Array<Swift.UInt8>) -> Swift.Void) throws
+  public mutating func finish(withBytes bytes: Swift.Array<Swift.UInt8>, output: (_ bytes: Swift.Array<Swift.UInt8>) -> Swift.Void) throws
+  public mutating func finish(output: (Swift.Array<Swift.UInt8>) -> Swift.Void) throws
+}
+final public class VNPTIDChaCha20 {
+  public enum Error : Swift.Error {
+    case invalidKeyOrInitializationVector
+    case notSupported
+    public static func == (a: VNPTID.VNPTIDChaCha20.Error, b: VNPTID.VNPTIDChaCha20.Error) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public static let blockSize: Swift.Int
+  final public let keySize: Swift.Int
+  public init(key: Swift.Array<Swift.UInt8>, iv nonce: Swift.Array<Swift.UInt8>) throws
+  @objc deinit
+}
+extension VNPTID.VNPTIDChaCha20 : VNPTID.VNPTIDCipher {
+  final public func encrypt(_ bytes: Swift.ArraySlice<Swift.UInt8>) throws -> Swift.Array<Swift.UInt8>
+  final public func decrypt(_ bytes: Swift.ArraySlice<Swift.UInt8>) throws -> Swift.Array<Swift.UInt8>
+}
+extension VNPTID.VNPTIDChaCha20 {
+  public struct ChaChaEncryptor : VNPTID.VNPTIDCryptor, VNPTID.Updatable {
+    public mutating func update(withBytes bytes: Swift.ArraySlice<Swift.UInt8>, isLast: Swift.Bool = false) throws -> Swift.Array<Swift.UInt8>
+    public func seek(to: Swift.Int) throws
+  }
+}
+extension VNPTID.VNPTIDChaCha20 {
+  public struct ChaChaDecryptor : VNPTID.VNPTIDCryptor, VNPTID.Updatable {
+    public mutating func update(withBytes bytes: Swift.ArraySlice<Swift.UInt8>, isLast: Swift.Bool = true) throws -> Swift.Array<Swift.UInt8>
+    public func seek(to: Swift.Int) throws
+  }
+}
+extension VNPTID.VNPTIDChaCha20 : VNPTID.VNPTIDCryptors {
+  final public func makeEncryptor() -> any VNPTID.Updatable & VNPTID.VNPTIDCryptor
+  final public func makeDecryptor() -> any VNPTID.Updatable & VNPTID.VNPTIDCryptor
+}
+@_inheritsConvenienceInitializers final public class VNPTIDCBCMAC : VNPTID.VNPTIDCMAC {
+  override final public func authenticate(_ bytes: Swift.Array<Swift.UInt8>) throws -> Swift.Array<Swift.UInt8>
+  override public init(key: Swift.Array<Swift.UInt8>) throws
+  @objc deinit
+}
+extension VNPTID.VNPTIDHMAC {
+  convenience public init(key: Swift.String, variant: VNPTID.VNPTIDHMAC.Variant = .md5) throws
+}
+public enum SwiftyJSONError : Swift.Int, Swift.Error {
+  case unsupportedType
+  case indexOutOfBounds
+  case elementTooDeep
+  case wrongType
+  case notExist
+  case invalidJSON
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+extension VNPTID.SwiftyJSONError : Foundation.CustomNSError {
+  public static var errorDomain: Swift.String {
+    get
+  }
+  public var errorCode: Swift.Int {
+    get
+  }
+  public var errorUserInfo: [Swift.String : Any] {
+    get
+  }
+}
+public enum Type : Swift.Int {
+  case number
+  case string
+  case bool
+  case array
+  case dictionary
+  case null
+  case unknown
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public struct JSON {
+  public init(data: Foundation.Data, options opt: Foundation.JSONSerialization.ReadingOptions = []) throws
+  public init(_ object: Any)
+  public init(parseJSON jsonString: Swift.String)
+  public mutating func merge(with other: VNPTID.JSON) throws
+  public func merged(with other: VNPTID.JSON) throws -> VNPTID.JSON
+  public var type: VNPTID.`Type` {
+    get
+  }
+  public var error: VNPTID.SwiftyJSONError? {
+    get
+  }
+  public var object: Any {
+    get
+    set
+  }
+  @available(*, unavailable, renamed: "null")
+  public static var nullJSON: VNPTID.JSON {
+    get
+  }
+  public static var null: VNPTID.JSON {
+    get
+  }
+}
+public enum Index<T> : Swift.Comparable {
+  case array(Swift.Int)
+  case dictionary(Swift.DictionaryIndex<Swift.String, T>)
+  case null
+  public static func == (lhs: VNPTID.Index<T>, rhs: VNPTID.Index<T>) -> Swift.Bool
+  public static func < (lhs: VNPTID.Index<T>, rhs: VNPTID.Index<T>) -> Swift.Bool
+}
+public typealias JSONIndex = VNPTID.Index<VNPTID.JSON>
+public typealias JSONRawIndex = VNPTID.Index<Any>
+extension VNPTID.JSON : Swift.Collection {
+  public typealias Index = VNPTID.JSONRawIndex
+  public var startIndex: VNPTID.JSON.Index {
+    get
+  }
+  public var endIndex: VNPTID.JSON.Index {
+    get
+  }
+  public func index(after i: VNPTID.JSON.Index) -> VNPTID.JSON.Index
+  public subscript(position: VNPTID.JSON.Index) -> (Swift.String, VNPTID.JSON) {
+    get
+  }
+  public typealias Element = (Swift.String, VNPTID.JSON)
+  public typealias Indices = Swift.DefaultIndices<VNPTID.JSON>
+  public typealias Iterator = Swift.IndexingIterator<VNPTID.JSON>
+  public typealias SubSequence = Swift.Slice<VNPTID.JSON>
+}
+public enum JSONKey {
+  case index(Swift.Int)
+  case key(Swift.String)
+}
+public protocol JSONSubscriptType {
+  var jsonKey: VNPTID.JSONKey { get }
+}
+extension Swift.Int : VNPTID.JSONSubscriptType {
+  public var jsonKey: VNPTID.JSONKey {
+    get
+  }
+}
+extension Swift.String : VNPTID.JSONSubscriptType {
+  public var jsonKey: VNPTID.JSONKey {
+    get
+  }
+}
+extension VNPTID.JSON {
+  public subscript(path: [any VNPTID.JSONSubscriptType]) -> VNPTID.JSON {
+    get
+    set
+  }
+  public subscript(path: any VNPTID.JSONSubscriptType...) -> VNPTID.JSON {
+    get
+    set
+  }
+}
+extension VNPTID.JSON : Swift.ExpressibleByStringLiteral {
+  public init(stringLiteral value: Swift.StringLiteralType)
+  public init(extendedGraphemeClusterLiteral value: Swift.StringLiteralType)
+  public init(unicodeScalarLiteral value: Swift.StringLiteralType)
+  public typealias ExtendedGraphemeClusterLiteralType = Swift.StringLiteralType
+  public typealias StringLiteralType = Swift.StringLiteralType
+  public typealias UnicodeScalarLiteralType = Swift.StringLiteralType
+}
+extension VNPTID.JSON : Swift.ExpressibleByIntegerLiteral {
+  public init(integerLiteral value: Swift.IntegerLiteralType)
+  public typealias IntegerLiteralType = Swift.IntegerLiteralType
+}
+extension VNPTID.JSON : Swift.ExpressibleByBooleanLiteral {
+  public init(booleanLiteral value: Swift.BooleanLiteralType)
+  public typealias BooleanLiteralType = Swift.BooleanLiteralType
+}
+extension VNPTID.JSON : Swift.ExpressibleByFloatLiteral {
+  public init(floatLiteral value: Swift.FloatLiteralType)
+  public typealias FloatLiteralType = Swift.FloatLiteralType
+}
+extension VNPTID.JSON : Swift.ExpressibleByDictionaryLiteral {
+  public init(dictionaryLiteral elements: (Swift.String, Any)...)
+  public typealias Key = Swift.String
+  public typealias Value = Any
+}
+extension VNPTID.JSON : Swift.ExpressibleByArrayLiteral {
+  public init(arrayLiteral elements: Any...)
+  public typealias ArrayLiteralElement = Any
+}
+extension VNPTID.JSON : Swift.RawRepresentable {
+  public init?(rawValue: Any)
+  public var rawValue: Any {
+    get
+  }
+  public func rawData(options opt: Foundation.JSONSerialization.WritingOptions = JSONSerialization.WritingOptions(rawValue: 0)) throws -> Foundation.Data
+  public func rawString(_ encoding: Swift.String.Encoding = .utf8, options opt: Foundation.JSONSerialization.WritingOptions = .prettyPrinted) -> Swift.String?
+  public func rawString(_ options: [VNPTID.writingOptionsKeys : Any]) -> Swift.String?
+  public typealias RawValue = Any
+}
+extension VNPTID.JSON : Swift.CustomStringConvertible, Swift.CustomDebugStringConvertible {
+  public var description: Swift.String {
+    get
+  }
+  public var debugDescription: Swift.String {
+    get
+  }
+}
+extension VNPTID.JSON {
+  public var array: [VNPTID.JSON]? {
+    get
+  }
+  public var arrayValue: [VNPTID.JSON] {
+    get
+  }
+  public var arrayObject: [Any]? {
+    get
+    set
+  }
+}
+extension VNPTID.JSON {
+  public var dictionary: [Swift.String : VNPTID.JSON]? {
+    get
+  }
+  public var dictionaryValue: [Swift.String : VNPTID.JSON] {
+    get
+  }
+  public var dictionaryObject: [Swift.String : Any]? {
+    get
+    set
+  }
+}
+extension VNPTID.JSON {
+  public var bool: Swift.Bool? {
+    get
+    set
+  }
+  public var boolValue: Swift.Bool {
+    get
+    set
+  }
+}
+extension VNPTID.JSON {
+  public var string: Swift.String? {
+    get
+    set
+  }
+  public var stringValue: Swift.String {
+    get
+    set
+  }
+}
+extension VNPTID.JSON {
+  public var number: Foundation.NSNumber? {
+    get
+    set
+  }
+  public var numberValue: Foundation.NSNumber {
+    get
+    set
+  }
+}
+extension VNPTID.JSON {
+  public var null: Foundation.NSNull? {
+    get
+    set
+  }
+  public func exists() -> Swift.Bool
+}
+extension VNPTID.JSON {
+  public var url: Foundation.URL? {
+    get
+    set
+  }
+}
+extension VNPTID.JSON {
+  public var double: Swift.Double? {
+    get
+    set
+  }
+  public var doubleValue: Swift.Double {
+    get
+    set
+  }
+  public var float: Swift.Float? {
+    get
+    set
+  }
+  public var floatValue: Swift.Float {
+    get
+    set
+  }
+  public var int: Swift.Int? {
+    get
+    set
+  }
+  public var intValue: Swift.Int {
+    get
+    set
+  }
+  public var uInt: Swift.UInt? {
+    get
+    set
+  }
+  public var uIntValue: Swift.UInt {
+    get
+    set
+  }
+  public var int8: Swift.Int8? {
+    get
+    set
+  }
+  public var int8Value: Swift.Int8 {
+    get
+    set
+  }
+  public var uInt8: Swift.UInt8? {
+    get
+    set
+  }
+  public var uInt8Value: Swift.UInt8 {
+    get
+    set
+  }
+  public var int16: Swift.Int16? {
+    get
+    set
+  }
+  public var int16Value: Swift.Int16 {
+    get
+    set
+  }
+  public var uInt16: Swift.UInt16? {
+    get
+    set
+  }
+  public var uInt16Value: Swift.UInt16 {
+    get
+    set
+  }
+  public var int32: Swift.Int32? {
+    get
+    set
+  }
+  public var int32Value: Swift.Int32 {
+    get
+    set
+  }
+  public var uInt32: Swift.UInt32? {
+    get
+    set
+  }
+  public var uInt32Value: Swift.UInt32 {
+    get
+    set
+  }
+  public var int64: Swift.Int64? {
+    get
+    set
+  }
+  public var int64Value: Swift.Int64 {
+    get
+    set
+  }
+  public var uInt64: Swift.UInt64? {
+    get
+    set
+  }
+  public var uInt64Value: Swift.UInt64 {
+    get
+    set
+  }
+}
+extension VNPTID.JSON : Swift.Comparable {
+}
+public func == (lhs: VNPTID.JSON, rhs: VNPTID.JSON) -> Swift.Bool
+public func <= (lhs: VNPTID.JSON, rhs: VNPTID.JSON) -> Swift.Bool
+public func >= (lhs: VNPTID.JSON, rhs: VNPTID.JSON) -> Swift.Bool
+public func > (lhs: VNPTID.JSON, rhs: VNPTID.JSON) -> Swift.Bool
+public func < (lhs: VNPTID.JSON, rhs: VNPTID.JSON) -> Swift.Bool
+public enum writingOptionsKeys {
+  case jsonSerialization
+  case castNilToNSNull
+  case maxObjextDepth
+  case encoding
+  public static func == (a: VNPTID.writingOptionsKeys, b: VNPTID.writingOptionsKeys) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+extension VNPTID.JSON : Swift.Codable {
+  public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+}
+public enum VNPTIDKeychainSwiftAccessOptions {
+  case accessibleWhenUnlocked
+  case accessibleWhenUnlockedThisDeviceOnly
+  case accessibleAfterFirstUnlock
+  case accessibleAfterFirstUnlockThisDeviceOnly
+  case accessibleWhenPasscodeSetThisDeviceOnly
+  public static func == (a: VNPTID.VNPTIDKeychainSwiftAccessOptions, b: VNPTID.VNPTIDKeychainSwiftAccessOptions) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+final public class VNPTIDScrypt {
+  public init(password: Swift.Array<Swift.UInt8>, salt: Swift.Array<Swift.UInt8>, dkLen: Swift.Int, N: Swift.Int, r: Swift.Int, p: Swift.Int) throws
+  final public func calculate() throws -> [Swift.UInt8]
+  @objc deinit
+}
+extension Swift.Array where Element == Swift.UInt8 {
+  public func toBase64() -> Swift.String?
+  public init(base64: Swift.String)
+}
+public struct VNPTIDPCBC : VNPTID.VNPTIDBlockMode {
+  public enum Error : Swift.Error {
+    case invalidInitializationVector
+    public static func == (a: VNPTID.VNPTIDPCBC.Error, b: VNPTID.VNPTIDPCBC.Error) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public let options: VNPTID.VNPTIDBlockModeOption
+  public init(iv: Swift.Array<Swift.UInt8>)
+  public func worker(blockSize: Swift.Int, VNPTIDCipherOperation: @escaping VNPTID.VNPTIDCipherOperationOnBlock) throws -> any VNPTID.VNPTIDCipherModeWorker
+}
+@objc @_inheritsConvenienceInitializers @IBDesignable @_Concurrency.MainActor(unsafe) open class VNPTIDOTPView : UIKit.UIView {
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) dynamic open var count: Swift.Int
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) dynamic open var spacing: CoreFoundation.CGFloat
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) dynamic open var textColorTextField: UIKit.UIColor
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) dynamic open var fontTextField: UIKit.UIFont
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) dynamic open var placeholder: Swift.String
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) dynamic open var placeholderTextColor: UIKit.UIColor
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) dynamic open var isCircleTextField: Swift.Bool
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) dynamic open var isBottomLineTextField: Swift.Bool
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) dynamic open var backGroundColorTextField: UIKit.UIColor
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) dynamic open var borderColorTextField: UIKit.UIColor?
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) dynamic open var selectedBorderColorTextField: UIKit.UIColor?
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) dynamic open var borderWidthTextField: CoreFoundation.CGFloat
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) dynamic open var selectedBorderWidthTextField: CoreFoundation.CGFloat
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) dynamic open var cornerRadiusTextField: CoreFoundation.CGFloat
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) dynamic open var tintColorTextField: UIKit.UIColor
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) dynamic open var shadowRadiusTextField: CoreFoundation.CGFloat
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) dynamic open var shadowOpacityTextField: Swift.Float
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) dynamic open var shadowOffsetSizeTextField: CoreFoundation.CGSize
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) dynamic open var shadowColorTextField: UIKit.UIColor?
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) dynamic open var dismissOnLastEntry: Swift.Bool
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) dynamic open var isSecureTextEntry: Swift.Bool
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) dynamic open var isCursorHidden: Swift.Bool
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) dynamic open var isDarkKeyboard: Swift.Bool
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func layoutSubviews()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func prepareForInterfaceBuilder()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func becomeFirstResponder() -> Swift.Bool
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func resignFirstResponder() -> Swift.Bool
+  @objc deinit
+}
+extension VNPTID.VNPTIDOTPView : UIKit.UITextFieldDelegate {
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func textFieldDidBeginEditing(_ textField: UIKit.UITextField)
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func textField(_ textField: UIKit.UITextField, shouldChangeCharactersIn range: Foundation.NSRange, replacementString string: Swift.String) -> Swift.Bool
+}
+extension Foundation.Data {
+  public func checksum() -> Swift.UInt16
+  public func md5() -> Foundation.Data
+  public func sha1() -> Foundation.Data
+  public func sha224() -> Foundation.Data
+  public func sha256() -> Foundation.Data
+  public func sha384() -> Foundation.Data
+  public func sha512() -> Foundation.Data
+  public func sha3(_ variant: VNPTID.VNPTIDSHA3.Variant) -> Foundation.Data
+  public func crc32(seed: Swift.UInt32? = nil, reflect: Swift.Bool = true) -> Foundation.Data
+  public func crc32c(seed: Swift.UInt32? = nil, reflect: Swift.Bool = true) -> Foundation.Data
+  public func crc16(seed: Swift.UInt16? = nil) -> Foundation.Data
+  public func encrypt(VNPTIDCipher: any VNPTID.VNPTIDCipher) throws -> Foundation.Data
+  public func decrypt(VNPTIDCipher: any VNPTID.VNPTIDCipher) throws -> Foundation.Data
+  public func authenticate(with authenticator: any VNPTID.VNPTIDAuthenticator) throws -> Foundation.Data
+}
+extension Foundation.Data {
+  public init(hex: Swift.String)
+  public var bytes: Swift.Array<Swift.UInt8> {
+    get
+  }
+  public func toHexString() -> Swift.String
+}
+final public class VNPTIDSHA2 {
+  public enum Variant : Swift.RawRepresentable {
+    case sha224, sha256, sha384, sha512
+    public var digestLength: Swift.Int {
+      get
+    }
+    public var blockSize: Swift.Int {
+      get
+    }
+    public typealias RawValue = Swift.Int
+    public var rawValue: VNPTID.VNPTIDSHA2.Variant.RawValue {
+      get
+    }
+    public init?(rawValue: VNPTID.VNPTIDSHA2.Variant.RawValue)
+  }
+  public init(variant: VNPTID.VNPTIDSHA2.Variant)
+  final public func calculate(for bytes: Swift.Array<Swift.UInt8>) -> Swift.Array<Swift.UInt8>
+  @objc deinit
+}
+extension VNPTID.VNPTIDSHA2 : VNPTID.Updatable {
+  final public func update(withBytes bytes: Swift.ArraySlice<Swift.UInt8>, isLast: Swift.Bool = false) throws -> Swift.Array<Swift.UInt8>
+}
+public protocol VNPTIDCryptor {
+  mutating func seek(to: Swift.Int) throws
+}
+extension Foundation.NSMutableAttributedString {
+  public func setAsLink(textToFind: Swift.String, linkURL: Swift.String) -> Swift.Bool
+}
+public struct VNPTIDCFB : VNPTID.VNPTIDBlockMode {
+  public enum Error : Swift.Error {
+    case invalidInitializationVector
+    public static func == (a: VNPTID.VNPTIDCFB.Error, b: VNPTID.VNPTIDCFB.Error) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public let options: VNPTID.VNPTIDBlockModeOption
+  public init(iv: Swift.Array<Swift.UInt8>)
+  public func worker(blockSize: Swift.Int, VNPTIDCipherOperation: @escaping VNPTID.VNPTIDCipherOperationOnBlock) throws -> any VNPTID.VNPTIDCipherModeWorker
+}
+extension VNPTID.VNPTIDBlowfish {
+  convenience public init(key: Swift.String, iv: Swift.String, padding: VNPTID.VNPTIDPadding = .pkcs7) throws
+}
+public class VNPTIDCMAC : VNPTID.VNPTIDAuthenticator {
+  public enum Error : Swift.Error {
+    case wrongKeyLength
+    public static func == (a: VNPTID.VNPTIDCMAC.Error, b: VNPTID.VNPTIDCMAC.Error) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public init(key: Swift.Array<Swift.UInt8>) throws
+  public func authenticate(_ bytes: Swift.Array<Swift.UInt8>) throws -> Swift.Array<Swift.UInt8>
+  public func authenticate(_ bytes: Swift.Array<Swift.UInt8>, VNPTIDCipher: any VNPTID.VNPTIDCipher) throws -> Swift.Array<Swift.UInt8>
+  @objc deinit
+}
+open class VNPTIDKeychainSwift {
+  open var lastResultCode: Darwin.OSStatus
+  open var accessGroup: Swift.String?
+  open var synchronizable: Swift.Bool
+  public init()
+  public init(keyPrefix: Swift.String)
+  @discardableResult
+  open func set(_ value: Swift.String, forKey key: Swift.String, withAccess access: VNPTID.VNPTIDKeychainSwiftAccessOptions? = nil) -> Swift.Bool
+  @discardableResult
+  open func set(_ value: Foundation.Data, forKey key: Swift.String, withAccess access: VNPTID.VNPTIDKeychainSwiftAccessOptions? = nil) -> Swift.Bool
+  @discardableResult
+  open func set(_ value: Swift.Bool, forKey key: Swift.String, withAccess access: VNPTID.VNPTIDKeychainSwiftAccessOptions? = nil) -> Swift.Bool
+  open func get(_ key: Swift.String) -> Swift.String?
+  open func getData(_ key: Swift.String, asReference: Swift.Bool = false) -> Foundation.Data?
+  open func getBool(_ key: Swift.String) -> Swift.Bool?
+  @discardableResult
+  open func delete(_ key: Swift.String) -> Swift.Bool
+  public var allKeys: [Swift.String] {
+    get
+  }
+  @discardableResult
+  open func clear() -> Swift.Bool
+  @objc deinit
+}
+public struct VNPTIDBlockModeOption : Swift.OptionSet {
+  public let rawValue: Swift.Int
+  public init(rawValue: Swift.Int)
+  public typealias ArrayLiteralElement = VNPTID.VNPTIDBlockModeOption
+  public typealias Element = VNPTID.VNPTIDBlockModeOption
+  public typealias RawValue = Swift.Int
+}
+final public class VNPTIDBlowfish {
+  public enum Error : Swift.Error {
+    case dataPaddingRequired
+    case invalidKeyOrInitializationVector
+    case invalidInitializationVector
+    case invalidBlockMode
+    public static func == (a: VNPTID.VNPTIDBlowfish.Error, b: VNPTID.VNPTIDBlowfish.Error) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public static let blockSize: Swift.Int
+  final public let keySize: Swift.Int
+  public init(key: Swift.Array<Swift.UInt8>, blockMode: any VNPTID.VNPTIDBlockMode = VNPTIDCBC(iv: Array<UInt8>(repeating: 0, count: VNPTIDBlowfish.blockSize)), padding: VNPTID.VNPTIDPadding) throws
+  @objc deinit
+}
+extension VNPTID.VNPTIDBlowfish : VNPTID.VNPTIDCipher {
+  final public func encrypt<C>(_ bytes: C) throws -> Swift.Array<Swift.UInt8> where C : Swift.Collection, C.Element == Swift.UInt8, C.Index == Swift.Int
+  final public func decrypt<C>(_ bytes: C) throws -> Swift.Array<Swift.UInt8> where C : Swift.Collection, C.Element == Swift.UInt8, C.Index == Swift.Int
+}
+@_hasMissingDesignatedInitializers public class VNPTIDBlockDecryptor : VNPTID.VNPTIDCryptor, VNPTID.Updatable {
+  public func update(withBytes bytes: Swift.ArraySlice<Swift.UInt8>, isLast: Swift.Bool = false) throws -> Swift.Array<Swift.UInt8>
+  public func seek(to position: Swift.Int) throws
+  @objc deinit
+}
+public struct VNPTIDOFB : VNPTID.VNPTIDBlockMode {
+  public enum Error : Swift.Error {
+    case invalidInitializationVector
+    public static func == (a: VNPTID.VNPTIDOFB.Error, b: VNPTID.VNPTIDOFB.Error) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public let options: VNPTID.VNPTIDBlockModeOption
+  public init(iv: Swift.Array<Swift.UInt8>)
+  public func worker(blockSize: Swift.Int, VNPTIDCipherOperation: @escaping VNPTID.VNPTIDCipherOperationOnBlock) throws -> any VNPTID.VNPTIDCipherModeWorker
+}
+final public class VNPTIDHMAC : VNPTID.VNPTIDAuthenticator {
+  public enum Error : Swift.Error {
+    case authenticateError
+    case invalidInput
+    public static func == (a: VNPTID.VNPTIDHMAC.Error, b: VNPTID.VNPTIDHMAC.Error) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public enum Variant {
+    case sha1, sha256, sha384, sha512, md5
+    public static func == (a: VNPTID.VNPTIDHMAC.Variant, b: VNPTID.VNPTIDHMAC.Variant) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public init(key: Swift.Array<Swift.UInt8>, variant: VNPTID.VNPTIDHMAC.Variant = .md5)
+  final public func authenticate(_ bytes: Swift.Array<Swift.UInt8>) throws -> Swift.Array<Swift.UInt8>
+  @objc deinit
+}
+public enum VNPTIDPKCS7 {
+}
+public struct VNPTIDCBC : VNPTID.VNPTIDBlockMode {
+  public enum Error : Swift.Error {
+    case invalidInitializationVector
+    public static func == (a: VNPTID.VNPTIDCBC.Error, b: VNPTID.VNPTIDCBC.Error) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public let options: VNPTID.VNPTIDBlockModeOption
+  public init(iv: Swift.Array<Swift.UInt8>)
+  public func worker(blockSize: Swift.Int, VNPTIDCipherOperation: @escaping VNPTID.VNPTIDCipherOperationOnBlock) throws -> any VNPTID.VNPTIDCipherModeWorker
+}
+extension VNPTID.VNPTIDAES {
+  convenience public init(key: Swift.String, iv: Swift.String, padding: VNPTID.VNPTIDPadding = .pkcs7) throws
+}
+public typealias VNPTIDCipherOperationOnBlock = (_ block: Swift.ArraySlice<Swift.UInt8>) -> Swift.Array<Swift.UInt8>?
+public protocol VNPTIDBlockMode {
+  var options: VNPTID.VNPTIDBlockModeOption { get }
+  func worker(blockSize: Swift.Int, VNPTIDCipherOperation: @escaping VNPTID.VNPTIDCipherOperationOnBlock) throws -> any VNPTID.VNPTIDCipherModeWorker
+}
+final public class VNPTIDRabbit {
+  public enum Error : Swift.Error {
+    case invalidKeyOrInitializationVector
+    public static func == (a: VNPTID.VNPTIDRabbit.Error, b: VNPTID.VNPTIDRabbit.Error) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public static let ivSize: Swift.Int
+  public static let keySize: Swift.Int
+  public static let blockSize: Swift.Int
+  final public var keySize: Swift.Int {
+    get
+  }
+  convenience public init(key: Swift.Array<Swift.UInt8>) throws
+  public init(key: Swift.Array<Swift.UInt8>, iv: Swift.Array<Swift.UInt8>?) throws
+  @objc deinit
+}
+extension VNPTID.VNPTIDRabbit : VNPTID.VNPTIDCipher {
+  final public func encrypt(_ bytes: Swift.ArraySlice<Swift.UInt8>) throws -> Swift.Array<Swift.UInt8>
+  final public func decrypt(_ bytes: Swift.ArraySlice<Swift.UInt8>) throws -> Swift.Array<Swift.UInt8>
+}
+extension Swift.Array where Element == Swift.UInt8 {
+  public init(hex: Swift.String)
+  public func toHexString() -> Swift.String
+}
+extension Swift.Array where Element == Swift.UInt8 {
+  @available(*, deprecated)
+  public func chunks(size chunksize: Swift.Int) -> Swift.Array<Swift.Array<Element>>
+  public func md5() -> [Element]
+  public func sha1() -> [Element]
+  public func sha224() -> [Element]
+  public func sha256() -> [Element]
+  public func sha384() -> [Element]
+  public func sha512() -> [Element]
+  public func sha2(_ variant: VNPTID.VNPTIDSHA2.Variant) -> [Element]
+  public func sha3(_ variant: VNPTID.VNPTIDSHA3.Variant) -> [Element]
+  public func crc32(seed: Swift.UInt32? = nil, reflect: Swift.Bool = true) -> Swift.UInt32
+  public func crc32c(seed: Swift.UInt32? = nil, reflect: Swift.Bool = true) -> Swift.UInt32
+  public func crc16(seed: Swift.UInt16? = nil) -> Swift.UInt16
+  public func encrypt(VNPTIDCipher: any VNPTID.VNPTIDCipher) throws -> [Element]
+  public func decrypt(VNPTIDCipher: any VNPTID.VNPTIDCipher) throws -> [Element]
+  public func authenticate<A>(with authenticator: A) throws -> [Element] where A : VNPTID.VNPTIDAuthenticator
+}
+public protocol VNPTIDCryptors : AnyObject {
+  func makeEncryptor() throws -> any VNPTID.Updatable & VNPTID.VNPTIDCryptor
+  func makeDecryptor() throws -> any VNPTID.Updatable & VNPTID.VNPTIDCryptor
+  static func randomIV(_ blockSize: Swift.Int) -> Swift.Array<Swift.UInt8>
+}
+extension VNPTID.VNPTIDCryptors {
+  public static func randomIV(_ count: Swift.Int) -> Swift.Array<Swift.UInt8>
+}
+extension VNPTID.VNPTIDRabbit {
+  convenience public init(key: Swift.String) throws
+  convenience public init(key: Swift.String, iv: Swift.String) throws
+}
+extension Swift.String {
+  public func decryptBase64ToString(VNPTIDCipher: any VNPTID.VNPTIDCipher) throws -> Swift.String
+  public func decryptBase64(VNPTIDCipher: any VNPTID.VNPTIDCipher) throws -> Swift.Array<Swift.UInt8>
+}
+@_hasMissingDesignatedInitializers final public class VNPTIDChecksum {
+  @objc deinit
+}
+extension VNPTID.VNPTIDChecksum {
+  public static func crc32(_ message: Swift.Array<Swift.UInt8>, seed: Swift.UInt32? = nil, reflect: Swift.Bool = true) -> Swift.UInt32
+  public static func crc32c(_ message: Swift.Array<Swift.UInt8>, seed: Swift.UInt32? = nil, reflect: Swift.Bool = true) -> Swift.UInt32
+  public static func crc16(_ message: Swift.Array<Swift.UInt8>, seed: Swift.UInt16? = nil) -> Swift.UInt16
+}
+public enum VNPTIDCipherError : Swift.Error {
+  case encrypt
+  case decrypt
+  public static func == (a: VNPTID.VNPTIDCipherError, b: VNPTID.VNPTIDCipherError) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public protocol VNPTIDCipher : AnyObject {
+  var keySize: Swift.Int { get }
+  func encrypt(_ bytes: Swift.ArraySlice<Swift.UInt8>) throws -> Swift.Array<Swift.UInt8>
+  func encrypt(_ bytes: Swift.Array<Swift.UInt8>) throws -> Swift.Array<Swift.UInt8>
+  func decrypt(_ bytes: Swift.ArraySlice<Swift.UInt8>) throws -> Swift.Array<Swift.UInt8>
+  func decrypt(_ bytes: Swift.Array<Swift.UInt8>) throws -> Swift.Array<Swift.UInt8>
+}
+extension VNPTID.VNPTIDCipher {
+  public func encrypt(_ bytes: Swift.Array<Swift.UInt8>) throws -> Swift.Array<Swift.UInt8>
+  public func decrypt(_ bytes: Swift.Array<Swift.UInt8>) throws -> Swift.Array<Swift.UInt8>
+}
+public protocol VNPTIDPaddingProtocol {
+  func add(to: Swift.Array<Swift.UInt8>, blockSize: Swift.Int) -> Swift.Array<Swift.UInt8>
+  func remove(from: Swift.Array<Swift.UInt8>, blockSize: Swift.Int?) -> Swift.Array<Swift.UInt8>
+}
+public enum VNPTIDPadding : VNPTID.VNPTIDPaddingProtocol {
+  case noPadding, zeroPadding, pkcs7, pkcs5, iso78164
+  public func add(to: Swift.Array<Swift.UInt8>, blockSize: Swift.Int) -> Swift.Array<Swift.UInt8>
+  public func remove(from: Swift.Array<Swift.UInt8>, blockSize: Swift.Int?) -> Swift.Array<Swift.UInt8>
+  public static func == (a: VNPTID.VNPTIDPadding, b: VNPTID.VNPTIDPadding) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+extension VNPTID.VNPTIDPKCS5 {
+  public struct VNPTIDPBKDF1 {
+    public enum Error : Swift.Error {
+      case invalidInput
+      case derivedKeyTooLong
+      public static func == (a: VNPTID.VNPTIDPKCS5.VNPTIDPBKDF1.Error, b: VNPTID.VNPTIDPKCS5.VNPTIDPBKDF1.Error) -> Swift.Bool
+      public func hash(into hasher: inout Swift.Hasher)
+      public var hashValue: Swift.Int {
+        get
+      }
+    }
+    public enum Variant {
+      case md5, sha1
+      public static func == (a: VNPTID.VNPTIDPKCS5.VNPTIDPBKDF1.Variant, b: VNPTID.VNPTIDPKCS5.VNPTIDPBKDF1.Variant) -> Swift.Bool
+      public func hash(into hasher: inout Swift.Hasher)
+      public var hashValue: Swift.Int {
+        get
+      }
+    }
+    public init(password: Swift.Array<Swift.UInt8>, salt: Swift.Array<Swift.UInt8>, variant: VNPTID.VNPTIDPKCS5.VNPTIDPBKDF1.Variant = .sha1, iterations: Swift.Int = 4096, keyLength: Swift.Int? = nil) throws
+    public func calculate() -> Swift.Array<Swift.UInt8>
+  }
+}
+extension VNPTID.VNPTIDPKCS5 {
+  public struct VNPTIDPBKDF2 {
+    public enum Error : Swift.Error {
+      case invalidInput
+      case derivedKeyTooLong
+      public static func == (a: VNPTID.VNPTIDPKCS5.VNPTIDPBKDF2.Error, b: VNPTID.VNPTIDPKCS5.VNPTIDPBKDF2.Error) -> Swift.Bool
+      public func hash(into hasher: inout Swift.Hasher)
+      public var hashValue: Swift.Int {
+        get
+      }
+    }
+    public init(password: Swift.Array<Swift.UInt8>, salt: Swift.Array<Swift.UInt8>, iterations: Swift.Int = 4096, keyLength: Swift.Int? = nil, variant: VNPTID.VNPTIDHMAC.Variant = .sha256) throws
+    public func calculate() throws -> Swift.Array<Swift.UInt8>
+  }
+}
+public struct VNPTIDCCM {
+  public enum Error : Swift.Error {
+    case invalidInitializationVector
+    case invalidParameter
+    case fail
+    public static func == (a: VNPTID.VNPTIDCCM.Error, b: VNPTID.VNPTIDCCM.Error) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public let options: VNPTID.VNPTIDBlockModeOption
+  public var authenticationTag: Swift.Array<Swift.UInt8>?
+  public init(iv: Swift.Array<Swift.UInt8>, tagLength: Swift.Int, messageLength: Swift.Int, additionalAuthenticatedData: Swift.Array<Swift.UInt8>? = nil)
+  public init(iv: Swift.Array<Swift.UInt8>, tagLength: Swift.Int, messageLength: Swift.Int, authenticationTag: Swift.Array<Swift.UInt8>, additionalAuthenticatedData: Swift.Array<Swift.UInt8>? = nil)
+  public func worker(blockSize: Swift.Int, VNPTIDCipherOperation: @escaping VNPTID.VNPTIDCipherOperationOnBlock) throws -> any VNPTID.VNPTIDCipherModeWorker
+}
+final public class VNPTIDGCM : VNPTID.VNPTIDBlockMode {
+  public enum Mode {
+    case combined
+    case detached
+    public static func == (a: VNPTID.VNPTIDGCM.Mode, b: VNPTID.VNPTIDGCM.Mode) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  final public let options: VNPTID.VNPTIDBlockModeOption
+  public enum Error : Swift.Error {
+    case invalidInitializationVector
+    case fail
+    public static func == (a: VNPTID.VNPTIDGCM.Error, b: VNPTID.VNPTIDGCM.Error) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  final public var authenticationTag: Swift.Array<Swift.UInt8>?
+  public init(iv: Swift.Array<Swift.UInt8>, additionalAuthenticatedData: Swift.Array<Swift.UInt8>? = nil, tagLength: Swift.Int = 16, mode: VNPTID.VNPTIDGCM.Mode = .detached)
+  convenience public init(iv: Swift.Array<Swift.UInt8>, authenticationTag: Swift.Array<Swift.UInt8>, additionalAuthenticatedData: Swift.Array<Swift.UInt8>? = nil, mode: VNPTID.VNPTIDGCM.Mode = .detached)
+  final public func worker(blockSize: Swift.Int, VNPTIDCipherOperation: @escaping VNPTID.VNPTIDCipherOperationOnBlock) throws -> any VNPTID.VNPTIDCipherModeWorker
+  @objc deinit
+}
+public enum VNPTIDPKCS5 {
+}
+extension VNPTID.VNPTIDHKDF.Error : Swift.Equatable {}
+extension VNPTID.VNPTIDHKDF.Error : Swift.Hashable {}
+extension VNPTID.VNPTIDCTR : VNPTID.VNPTIDBlockMode {}
+extension VNPTID.VNPTIDCTR.Error : Swift.Equatable {}
+extension VNPTID.VNPTIDCTR.Error : Swift.Hashable {}
+extension VNPTID.VNPTIDSHA3.Variant : Swift.Equatable {}
+extension VNPTID.VNPTIDSHA3.Variant : Swift.Hashable {}
+extension VNPTID.VNPTIDBit : Swift.Equatable {}
+extension VNPTID.VNPTIDBit : Swift.Hashable {}
+extension VNPTID.VNPTIDBit : Swift.RawRepresentable {}
+extension VNPTID.VNPTIDAES.Error : Swift.Equatable {}
+extension VNPTID.VNPTIDAES.Error : Swift.Hashable {}
+extension VNPTID.VNPTIDAES.Variant : Swift.Equatable {}
+extension VNPTID.VNPTIDAES.Variant : Swift.Hashable {}
+extension VNPTID.VNPTIDAES.Variant : Swift.RawRepresentable {}
+extension VNPTID.VNPTIDPoly1305.Error : Swift.Equatable {}
+extension VNPTID.VNPTIDPoly1305.Error : Swift.Hashable {}
+extension VNPTID.VNPTIDChaCha20.Error : Swift.Equatable {}
+extension VNPTID.VNPTIDChaCha20.Error : Swift.Hashable {}
+extension VNPTID.SwiftyJSONError : Swift.Equatable {}
+extension VNPTID.SwiftyJSONError : Swift.Hashable {}
+extension VNPTID.SwiftyJSONError : Swift.RawRepresentable {}
+extension VNPTID.`Type` : Swift.Equatable {}
+extension VNPTID.`Type` : Swift.Hashable {}
+extension VNPTID.`Type` : Swift.RawRepresentable {}
+extension VNPTID.writingOptionsKeys : Swift.Equatable {}
+extension VNPTID.writingOptionsKeys : Swift.Hashable {}
+extension VNPTID.VNPTIDKeychainSwiftAccessOptions : Swift.Equatable {}
+extension VNPTID.VNPTIDKeychainSwiftAccessOptions : Swift.Hashable {}
+extension VNPTID.VNPTIDPCBC.Error : Swift.Equatable {}
+extension VNPTID.VNPTIDPCBC.Error : Swift.Hashable {}
+extension VNPTID.VNPTIDSHA2.Variant : Swift.Equatable {}
+extension VNPTID.VNPTIDSHA2.Variant : Swift.Hashable {}
+extension VNPTID.VNPTIDCFB.Error : Swift.Equatable {}
+extension VNPTID.VNPTIDCFB.Error : Swift.Hashable {}
+extension VNPTID.VNPTIDCMAC.Error : Swift.Equatable {}
+extension VNPTID.VNPTIDCMAC.Error : Swift.Hashable {}
+extension VNPTID.VNPTIDBlowfish.Error : Swift.Equatable {}
+extension VNPTID.VNPTIDBlowfish.Error : Swift.Hashable {}
+extension VNPTID.VNPTIDOFB.Error : Swift.Equatable {}
+extension VNPTID.VNPTIDOFB.Error : Swift.Hashable {}
+extension VNPTID.VNPTIDHMAC.Error : Swift.Equatable {}
+extension VNPTID.VNPTIDHMAC.Error : Swift.Hashable {}
+extension VNPTID.VNPTIDHMAC.Variant : Swift.Equatable {}
+extension VNPTID.VNPTIDHMAC.Variant : Swift.Hashable {}
+extension VNPTID.VNPTIDCBC.Error : Swift.Equatable {}
+extension VNPTID.VNPTIDCBC.Error : Swift.Hashable {}
+extension VNPTID.VNPTIDRabbit.Error : Swift.Equatable {}
+extension VNPTID.VNPTIDRabbit.Error : Swift.Hashable {}
+extension VNPTID.VNPTIDCipherError : Swift.Equatable {}
+extension VNPTID.VNPTIDCipherError : Swift.Hashable {}
+extension VNPTID.VNPTIDPadding : Swift.Equatable {}
+extension VNPTID.VNPTIDPadding : Swift.Hashable {}
+extension VNPTID.VNPTIDPKCS5.VNPTIDPBKDF1.Error : Swift.Equatable {}
+extension VNPTID.VNPTIDPKCS5.VNPTIDPBKDF1.Error : Swift.Hashable {}
+extension VNPTID.VNPTIDPKCS5.VNPTIDPBKDF1.Variant : Swift.Equatable {}
+extension VNPTID.VNPTIDPKCS5.VNPTIDPBKDF1.Variant : Swift.Hashable {}
+extension VNPTID.VNPTIDPKCS5.VNPTIDPBKDF2.Error : Swift.Equatable {}
+extension VNPTID.VNPTIDPKCS5.VNPTIDPBKDF2.Error : Swift.Hashable {}
+extension VNPTID.VNPTIDCCM : VNPTID.VNPTIDBlockMode {}
+extension VNPTID.VNPTIDCCM.Error : Swift.Equatable {}
+extension VNPTID.VNPTIDCCM.Error : Swift.Hashable {}
+extension VNPTID.VNPTIDGCM.Mode : Swift.Equatable {}
+extension VNPTID.VNPTIDGCM.Mode : Swift.Hashable {}
+extension VNPTID.VNPTIDGCM.Error : Swift.Equatable {}
+extension VNPTID.VNPTIDGCM.Error : Swift.Hashable {}

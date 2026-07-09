@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>{{itemData.id?'Cập nhật cấu hình':'Thêm cấu hình'}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="modalClose()">
+        <ion-icon color="light" name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <div>
+    <div class="fw-600 fs-16 mb-1">Mô tả<ion-text color="danger">*</ion-text></div>
+    <ion-input mode="md" fill="outline" clear-input="true" placeholder="Nhập mô tả" minlength="6" maxlength="100" [value]="itemData.label_vn" (ionChange)="changeLabelVN($event)"></ion-input>
+  </div>
+
+  <div class="mt-4">
+    <div class="fw-600 fs-16 mb-1">Mô tả (EN)</div>
+    <ion-input mode="md" fill="outline" clear-input="true" placeholder="Nhập mô tả (EN)" minlength="6" maxlength="100" [value]="itemData.label_en" (ionChange)="changeLabelEN($event)"></ion-input>
+  </div>
+
+  <div class="mt-4">
+    <div class="fw-600 fs-16 mb-1">Giá trị</div>
+    <ion-input mode="md" fill="outline" clear-input="true" placeholder="Nhập giá trị" minlength="6" maxlength="100" [value]="itemData.value" (ionChange)="changeValue($event)"></ion-input>
+  </div>
+
+  <div class="mt-4">
+    <ion-checkbox labelPlacement="end" [checked]="itemData.status" (ionChange)="changeStatus($event)">Áp dụng</ion-checkbox>
+  </div>
+
+</ion-content>
+
+<ion-footer collapse="fade">
+  <ion-toolbar>
+    <ion-button color="primary" expand="block" (click)="modalSubmit()">
+      <ion-label>Hoàn tất</ion-label>
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

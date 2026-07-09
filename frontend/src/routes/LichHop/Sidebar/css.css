@@ -1,0 +1,30 @@
+#main-sidebar div div.os-padding div div nav ul li:last-child nav.nav-child ul.submenu {
+    display: none;
+    list-style-type: none;
+}
+
+#main-sidebar div div.os-padding div div nav ul li:last-child nav.nav-child ul.submenu li {
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+#main-sidebar div div.os-padding div div nav ul li:last-child nav.nav-child ul.submenu li a {
+    color: #fff;
+}
+
+#main-sidebar div div.os-padding div div nav ul li:last-child:hover>nav.nav-child ul.submenu {
+    display: block;
+}
+#main-sidebar > div > div.os-padding > div > div > ul > li{
+    padding-left: 15px !important;
+}
+#main-sidebar > div > div.os-padding > div > div > ul > li.ant-menu-submenu.ant-menu-submenu-inline.ant-menu-submenu-open > div,
+#main-sidebar > div > div.os-padding > div > div > ul > li.ant-menu-submenu.ant-menu-submenu-inline > div{
+    padding-left: 0 !important;
+}
+#main-sidebar > div > div.os-padding > div > div > ul > li.ant-menu-submenu.ant-menu-submenu-inline > ul.ant-menu.ant-menu-sub.ant-menu-inline > li.ant-menu-item{
+    padding-left: 20px !important;
+}
+.user-panel{
+    /*border-bottom: 1px solid #4f5962 !important;*/
+}

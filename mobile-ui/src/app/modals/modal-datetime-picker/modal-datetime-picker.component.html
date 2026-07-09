@@ -1,0 +1,14 @@
+@if(isInit){
+<ion-datetime #datetime [presentation]="options.presentation" [min]="options.min" [value]="options.value" (ionChange)="changeDateTime($event)" locale="vi-VN" hourCycle="h23" [firstDayOfWeek]="1" [formatOptions]="{time: { hour: '2-digit', minute: '2-digit' }, date: { day: '2-digit', month: '2-digit', year: 'numeric' }}"></ion-datetime>
+}
+
+<ion-footer class="ion-padding">
+  <div class="d-flex align-items-center justify-content-between">
+    <ion-button class="flex-grow-1 m-1" size="small" color="medium" shape="round" fill="outline" (click)="modalClose()">
+      <ion-label>Hủy</ion-label>
+    </ion-button>
+    <ion-button class="flex-grow-1 m-1" size="small" color="primary" shape="round" (click)="modalConfirm()">
+      <ion-label>Áp dụng</ion-label>
+    </ion-button>
+  </div>
+</ion-footer>

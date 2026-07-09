@@ -1,0 +1,18 @@
+@media print {
+    html,
+    body {
+        height: 100%;
+    }
+    .body {
+        overflow: visible;
+        display: flex;
+        flex-direction: column;
+        // .ag-header .ag-advanced-filter-header {
+        //     background-color: #d4e9df;
+        // }
+    }
+    @page {
+        margin: 25px;
+        size: landscape;
+    }
+}

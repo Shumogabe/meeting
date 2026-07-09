@@ -1,0 +1,279 @@
+menu dọc: { path: src\Layout\Sidebar\index.js }
+
+#Thiết lập cấu hình kế hoạch: { quản trị hệ thống: {
+                - thêm -
+                - sửa -
+                - xóa -
+                - danh sách -
+                - khôi phục -,
+            } }
+#Thiết lập cấu hình chương trình: { quản trị hệ thống: {
+                - thêm -
+                - sửa -
+                - xóa -
+                - danh sách -
+                - khôi phục -,
+            } }
+#Thiết lập cấu hình tài liệu họp: { quản trị hệ thống: {
+                - thêm -
+                - sửa -
+                - xóa -
+                - danh sách -
+                - khôi phục -,
+            } }
+#Thiết lập cấu hình thành phần tham gia: { quản trị hệ thống: {
+                - thêm -
+                - sửa -
+                - xóa -
+                - danh sách -
+                - khôi phục -,
+            } }
+#Thiết lập cấu hình biểu quyết: { quản trị hệ thống: {
+                - thêm -
+                - sửa -
+                - xóa -
+                - danh sách -
+                - khôi phục -,
+            } }
+#Thiết lập cấu hình báo cáo thống kê: { quản trị hệ thống: {
+                - thêm -
+                - sửa -
+                - xóa -
+                - danh sách -
+                - khôi phục -,
+            } }
+#Thiết lập cấu hình sự kiện: { quản trị hệ thống: {
+                - thêm -
+                - sửa -
+                - xóa -
+                - danh sách -
+                - khôi phục -,
+            } }
+#Thiết lập cấu hình người dùng: { quản trị hệ thống: {
+                - thêm -
+                - sửa -
+                - xóa -
+                - danh sách -
+                - khôi phục -,
+            } }
+#Thiết lập cấu hình hệ thống: { quản trị hệ thống: {
+                - thêm -
+                - sửa -
+                - xóa -
+                - danh sách -
+                - khôi phục -,
+            } }
+#Quản lý thông tin cấu hình dịch vụ sms: { quản trị hệ thống: {
+                - thêm -
+                - sửa -
+                - xóa -
+                - danh sách -
+                - khôi phục -,
+            } }
+#Thiết lập thông báo lịch họp: { quản trị hệ thống: {
+                - thêm -
+                - sửa -
+                - xóa -
+                - danh sách -
+                - xem -,
+            } }
+#Thiết lập thời gian chờ: { quản trị hệ thống: {
+                - sửa -
+                - xóa -
+                - danh sách -
+                - kiểm tra,
+                kết thúc phiên và yêu cầu đăng nhập lại -
+                - xem -,
+            } }
+
+Quản lý nhật ký truy cập phần mềm: { quản trị hệ thống: {
+                - danh sách -
+                - xóa -
+                - tìm kiếm -
+                - thống kê -
+                - phân trang -
+                - xem -
+                - tìm kiếm nâng cao -
+                - sắp xếp nhật ký truy cập -,
+            } }
+Quản lý nhật ký quản lý người dùng: { quản trị hệ thống: {
+                - danh sách -
+                - xóa -
+                - tìm kiếm -
+                - thống kê -
+                - phân trang -
+                - xem -
+                - tìm kiếm nâng cao -
+                - sắp xếp nhật ký truy cập -,
+            } }
+Quản lý nhật ký quản lý lập lịch: { quản trị hệ thống: {
+                - danh sách -
+                - xóa -
+                - tìm kiếm -
+                - thống kê -
+                - phân trang -
+                - xem -
+                - tìm kiếm nâng cao -
+                - sắp xếp nhật ký truy cập -,
+            } }
+Quản lý nhật ký quản lý sự kiện: { quản trị hệ thống: {
+                - danh sách -
+                - xóa -
+                - tìm kiếm -
+                - thống kê -
+                - phân trang -
+                - xem -
+                - tìm kiếm nâng cao -
+                - sắp xếp nhật ký truy cập -,
+            } }
+Quản lý nhật ký tham gia phòng họp: { quản trị hệ thống: {
+                - danh sách -
+                - xóa -
+                - tìm kiếm -
+                - thống kê -
+                - phân trang -
+                - xem -
+                - tìm kiếm nâng cao -
+                - sắp xếp nhật ký truy cập -,
+            } }
+Quản lý nhật ký các lỗi phát sinh trong quá trình hoạt động: { quản trị hệ thống: {
+                - danh sách -
+                - tìm kiếm -
+                - thống kê -
+                - phân trang -,
+            } }
+Quản lý nhật ký quản lý đăng ký dịch vụ: { quản trị hệ thống: {
+                - danh sách -
+                - theo đơn vị -
+                - theo thời gian -
+                - theo tài khoản -
+                - xuất nhật ký ra pdf -
+                - xuất nhật ký ra excel -
+                - xuất nhật ký ra word -
+                - phân trang -,
+            } }
+Quản lý nhật ký đăng nhập: { quản trị hệ thống: {
+                - danh sách -      
+                - theo đơn vị -             // chưa có
+                - theo thời gian -          
+                - xuất nhật ký ra excel -   // chưa có
+               - phân trang -           
+            } }
+
+#Quản lý danh mục máy chủ: { quản trị hệ thống: {
+                - thêm -
+                - sửa -
+                - xóa -
+                - danh sách -
+                - hủy xác nhận -
+                - danh sách xóa -
+                - khôi phục -
+                - phân trang -,
+            } }
+#Quản lý thông tin đơn vị: { quản trị hệ thống: {
+                - thêm -
+                - sửa -
+                - xóa -
+                - danh sách -
+                - xem -
+                - tìm kiếm -
+                - danh sách xóa -   
+                - khôi phục -       
+                - phân trang -,
+            } }
+#Quản lý thông tin người dùng: { quản trị hệ thống: {
+                - thêm -
+                - sửa -
+                - xóa -
+                - danh sách -
+                - xem -
+                - tìm kiếm -
+                - danh sách xóa -
+                - khôi phục -
+                - phân trang -,
+            } }
+#Quản lý chức vụ: { quản trị hệ thống: {
+                - thêm - 
+                - sửa -
+                - xóa -
+                - danh sách -
+                - xem -
+                - tìm kiếm -
+                - danh sách xóa -
+                - khôi phục -
+                - phân trang -,
+            } }
+#Quản lý vai trò người dùng: { quản trị hệ thống: {
+                - thêm -
+                - sửa -
+                - xóa -
+                - danh sách -
+                - xem -
+                - tìm kiếm -
+                - danh sách xóa -
+                - khôi phục -
+                - phân trang -,
+            } }
+#Quản lý phân quyền người dùng: { quản trị hệ thống: {
+                - thêm -
+                - sửa -
+                - xóa -
+                - danh sách -
+                - phân quyền -
+                - xem -
+                - khôi phục -
+                - tìm kiếm -,
+            } }
+#Quản lý chặn truy cập: { quản trị hệ thống: {
+                - thêm -
+                - sửa -
+                - xóa -
+                - danh sách -
+                - xem -
+                - tìm kiếm -
+                - danh sách đã xóa -
+                - khôi phục -
+                - phân trang -,
+            } }
+#Quản lý, giám sát IP máy chủ người quản trị: { quản trị hệ thống: {
+                - thêm -
+                - sửa -
+                - xóa -
+                - danh sách -
+                - xem -
+                - tìm kiếm -,
+            } }
+
+#Quản lý sao lưu cấu hình hệ thống: { quản trị hệ thống: {
+                - thêm -
+                - xem -
+                - xóa -
+                - tải về -,
+            } }
+#Quản lý danh mục loại dữ liệu gán nhãn sao lưu: { quản trị hệ thống: {
+                - thêm -
+                - sửa -
+                - xóa -
+                - danh sách -
+                - xem -
+                - tìm kiếm -,
+            } }
+#Quản lý sao lưu bảng dữ liệu: { quản trị hệ thống: {
+                - thêm -
+                - xem -
+                - tải về -
+                - xóa -
+                - danh sách -,
+            } }
+#Quản lý sao lưu tệp tin: { quản trị hệ thống: {
+                - thêm -
+                - xem -
+                - tải về -
+                - xóa -,
+            } }
+#Quản lý thiết lập cơ chế sao lưu: { quản trị hệ thống: {
+                - thêm -
+                - sửa -
+                - xóa -
+                - danh sách -,
+            } }

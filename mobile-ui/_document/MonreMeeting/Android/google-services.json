@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "95324958336",
+    "project_id": "monre-meeting",
+    "storage_bucket": "monre-meeting.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:95324958336:android:83c30f568ce18e29198065",
+        "android_client_info": {
+          "package_name": "vn.gov.monre.meeting"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBrBa10uXG12Y9PLM2iFndsRU4BQnE3BN8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

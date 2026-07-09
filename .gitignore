@@ -1,0 +1,37 @@
+# ===== Build / dependency output (equivalent to node_modules/bin/obj) =====
+**/node_modules/
+**/bin/
+**/obj/
+**/build/
+**/dist/
+**/publish/
+**/coverage/
+**/.angular/
+
+# Mobile native build output (mobile-ui: Ionic/Capacitor Android+iOS)
+**/www/
+**/platforms/
+**/plugins/
+**/.ionic/
+**/android/.gradle/
+**/android/local.properties
+*.apk
+*.aab
+*.dex
+**/ios/Pods/
+**/ios/DerivedData/
+**/ios/xcuserdata/
+*.xcuserstate
+
+# ===== OS / IDE junk (not project content) =====
+.DS_Store
+Thumbs.db
+.vs/
+.idea/
+.vscode/
+*.user
+*.suo
+
+# ===== Runtime-generated logs =====
+*.log
+logs/

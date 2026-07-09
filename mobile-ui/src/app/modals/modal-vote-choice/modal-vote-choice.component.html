@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Chọn biểu quyết</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="modalClose()">
+        <ion-icon color="light" name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  @if(itemData){
+  <h5 class="my-0 fw-700">{{itemData.title}}</h5>
+
+  <hr class="border-top my-3" />
+
+  @if(itemData.type){
+  <div>
+    @for(child of itemData.meetingvoted||[]; track child){
+    <div class="mb-2">
+      <ion-checkbox mode="md" labelPlacement="end" [value]="child.id" (ionChange)="selectMutiVoted($event,child)">
+        <ion-label class="text-wrap">{{child.title}}</ion-label>
+      </ion-checkbox>
+    </div>
+    }
+  </div>
+  }
+  @else {
+  <ion-radio-group (ionChange)="selectOneVoted($event)">
+    @for(child of itemData.meetingvoted||[]; track child){
+    <div class="mb-2">
+      <ion-radio mode="md" labelPlacement="end" [value]="child.id">
+        <ion-label class="text-wrap">{{child.title}}</ion-label>
+      </ion-radio>
+    </div>
+    }
+  </ion-radio-group>
+  }
+  }
+
+</ion-content>
+
+<ion-footer collapse="fade">
+  <ion-toolbar>
+    <ion-button color="primary" expand="block" (click)="modalSubmit()">
+      <ion-label>Xác nhận</ion-label>
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

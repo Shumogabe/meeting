@@ -1,0 +1,138 @@
+<div class="min-h-100 d-flex flex-column">
+
+  <div class="flex-grow-1 ion-padding bg-light">
+    @if(!listData.length){
+    <div class="py-5">
+      <div class="d-flex align-items-center justify-content-center data-not-found">
+        <div>
+          <div class="d-flex justify-content-center">
+            <ion-img class="w-40" src="../../../assets/image/no-documents.svg"></ion-img>
+          </div>
+          <div class="mt-2 text-center">{{'DataNotFound'|translate}}</div>
+        </div>
+      </div>
+    </div>
+    }
+    @else {
+    @for(item of listData; track item){
+    <div class="mb-2">
+      <ng-container [ngTemplateOutlet]="templateItem" [ngTemplateOutletContext]="{ $implicit: item }"></ng-container>
+    </div>
+    }
+    }
+  </div>
+
+  @if(isAddEdit){
+  <ion-footer collapse="fade">
+    <ion-toolbar>
+      <div class="d-flex">
+        <ion-button class="flex-grow-1" color="primary" fill="outline" expand="block" (click)="addDocument()">
+          <ion-label>Thêm tài liệu</ion-label>
+        </ion-button>
+        <ion-button class="flex-grow-1" color="primary" expand="block" (click)="presentModalConslusionAdd()">
+          <ion-label>Thêm kết luận</ion-label>
+        </ion-button>
+      </div>
+    </ion-toolbar>
+  </ion-footer>
+  }
+</div>
+
+<ion-modal #modalConfirmDelete class="ion-modal-small">
+  <ng-template>
+    <div class="p-4">
+      <div class="text-center">
+        <h4 class="mb-2">Xóa kết luận cuộc họp</h4>
+        <p class="mb-4 fs-3">Bạn có chắc muốn xóa mục này?</p>
+      </div>
+      <div class="row">
+        <div class="col-6 pr-1">
+          <ion-button color="primary" fill="outline" expand="block" (click)="modalConfirmDelete?.dismiss();">{{'Cancel'|translate}}</ion-button>
+        </div>
+        <div class="col-6 pl-1">
+          <ion-button color="danger" expand="block" (click)="confirmDelete(modalConfirmDelete)">{{'Delete'|translate}}</ion-button>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</ion-modal>
+
+<ng-template #templateItem let-item>
+  <div class="card-conslusion" [attr.color]="ColorStatusConslusion(item.status)">
+    <div>
+
+      <div class="d-flex align-items-start justify-content-between">
+        <h5 class="my-0 fw-700">{{item.title}}</h5>
+        @if(item.status==2){
+        <ion-chip color="success" class="ion-no-margin fs-10 min-h-20 py-0 no-opacity">
+          <ion-label>Đã duyệt</ion-label>
+        </ion-chip>
+        }
+        @else if(item.status==3){
+        <ion-chip color="danger" class="ion-no-margin fs-10 min-h-20 py-0 no-opacity">
+          <ion-label>Hủy duyệt</ion-label>
+        </ion-chip>
+        }
+        @else {
+        <ion-chip color="warning" class="ion-no-margin fs-10 min-h-20 py-0 no-opacity">
+          <ion-label>Chưa duyệt</ion-label>
+        </ion-chip>
+        }
+      </div>
+
+      @if(item.content){
+      <div class="mt-4">
+        <b>Nội dung:</b>
+        <div class="mt-2">
+          <ion-note color="medium" [innerHTML]="item.content"></ion-note>
+        </div>
+      </div>
+      }
+
+      @if(item.fileUrl){
+      <div class="mt-4">
+        <div class="fs-12">Tệp đính kèm:</div>
+        <div class="mt-1 document-item cursor-pointer" (click)="presentModalDocumentDetail(item.fileOriginalName,item.fileType,item.fileUrl)">
+          <div class="d-flex align-items-center justify-content-between">
+            <div class="d-flex align-items-start text-truncate">
+              <ion-icon class="fs-20 mr-2" color="medium" src="../../../../assets/icon/document.svg"></ion-icon>
+              <ion-text class="text-truncate" color="medium">{{item.fileOriginalName}}</ion-text>
+            </div>
+          </div>
+        </div>
+      </div>
+      }
+
+      <div class="d-flex align-items-center justify-content-end mt-2">
+        @if(Role.checkRole(userRoles,Role.APPROVE) && !isEnd){
+        @if(item.status == StatusConslusion.DADUYET){
+        <ion-button class="flex-grow-1" size="small" color="primary" fill="outline" (click)="confirmConslusionCancel(item.id)">
+          <ion-label>Hủy xác nhận</ion-label>
+        </ion-button>
+        }
+        @else {
+        <ion-button class="flex-grow-1" size="small" color="primary" (click)="confirmConslusionOk(item.id)">
+          <ion-label>Xác nhận</ion-label>
+        </ion-button>
+        }
+        }
+
+        @if(isAddEdit){
+        @if(item.status == StatusConslusion.DADUYET){
+
+        }
+        @else{
+        <ion-button class="min-w-120" size="small" color="medium" fill="outline" (click)="presentModalConslusionUpdate(item.id)">
+          <ion-label>Chỉnh sửa</ion-label>
+        </ion-button>
+        <ion-button class="min-w-80" size="small" color="danger" fill="outline" (click)="selectedId=item.id;modalConfirmDelete?.present();">
+          <ion-label>Xóa</ion-label>
+        </ion-button>
+        }
+        }
+      </div>
+
+    </div>
+  </div>
+
+</ng-template>

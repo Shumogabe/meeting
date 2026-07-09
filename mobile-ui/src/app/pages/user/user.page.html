@@ -1,0 +1,107 @@
+<ion-header class="ion-no-border ion-header-custom">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/" text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{'User'|translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="d-flex flex-column min-h-100">
+    <div class="flex-grow-1">
+
+      @if(user){
+
+      <div class="user-info"><!--thêm tí cho cân, bớt ngứa ngứa con mắt-->
+        <ion-item lines="none">
+          <ion-avatar slot="start">
+            <img src="../../../assets/image/default-avatar.svg" alt="avatar" />
+          </ion-avatar>
+          <ion-label>
+            <ion-text color="primary"><b>{{user.name}}</b></ion-text>
+            <div class="mt-1 d-flex align-items-center">
+              <ion-icon class="fs-14" color="medium" src="../../../assets/icon/mail.svg"></ion-icon>
+              <ion-note color="medium" class="ml-2 fs-14" *ngIf="user.email">{{user.email}}</ion-note>
+            </div>
+            <div class="mt-1 d-flex align-items-center">
+              <ion-icon class="fs-14" color="medium" src="../../../assets/icon/phone.svg"></ion-icon>
+              <ion-note color="medium" class="ml-2 fs-14" *ngIf="user.mobile">{{APP_FUNC_FormatMobileNumber(user.mobile)}}</ion-note>
+            </div>
+          </ion-label>
+        </ion-item>
+      </div>
+
+      <div class="px-3 my-4">
+        <ion-list lines="none">
+          <ion-item button="true" detail="true" (click)="navigateByUrl(APP_ROUTE.USER_DETAIL)">
+            <ion-icon slot="start" class="fs-24" color="primary" src="../../../assets/icon/user-rounded.svg"></ion-icon>
+            <ion-label>Thông tin tài khoản</ion-label>
+          </ion-item>
+          <!-- <ion-item button="true" detail="true">
+            <ion-icon slot="start" class="fs-24" color="primary" name="lock-closed-outline"></ion-icon>
+            <ion-label>Đổi mật khẩu</ion-label>
+          </ion-item>
+        </ion-list>
+      </div>
+
+      <div class="px-3 my-4">
+        <ion-list lines="none"> -->
+          <ion-item button="true" detail="true" (click)="navigateByUrl(APP_ROUTE.OPTION)">
+            <ion-icon slot="start" class="fs-24" color="primary" src="../../../assets/icon/monitor-camera.svg"></ion-icon>
+            <ion-label>Cấu hình cuộc họp</ion-label>
+          </ion-item>
+          <ion-item button="true" detail="true" (click)="navigateByUrl(APP_ROUTE.DELETED)">
+            <ion-icon slot="start" class="fs-24" color="primary" src="../../../assets/icon/trash.svg"></ion-icon>
+            <ion-label>Dữ liệu đã xóa</ion-label>
+          </ion-item>
+          <!-- <ion-item button="true" detail="true" (click)="navigateByUrl(APP_ROUTE.SETTING)">
+            <ion-icon slot="start" class="fs-24" color="primary" src="../../../assets/icon/settings.svg"></ion-icon>
+            <ion-label>Cài đặt</ion-label>
+          </ion-item> -->
+          <ion-item button="true" detail="true" (click)="navigateByUrl(APP_ROUTE.FAQ)">
+            <ion-icon slot="start" class="fs-24" color="primary" src="../../../assets/icon/chat-alt.svg"></ion-icon>
+            <ion-label>Câu hỏi thường gặp</ion-label>
+          </ion-item>
+          <ion-item button="true" detail="true" (click)="navigateByUrl(APP_ROUTE.HELP)">
+            <ion-icon slot="start" class="fs-24" color="primary" src="../../../assets/icon/book-open.svg"></ion-icon>
+            <ion-label>Hướng dẫn sử dụng</ion-label>
+          </ion-item>
+        </ion-list>
+      </div>
+
+      }
+    </div>
+
+    <div class="px-3 my-3">
+      <ion-button class="ion-no-margin" color="primary" fill="outline" expand="block" (click)="modalSignOut?.present()">
+        <ion-icon slot="end" name="log-out-outline"></ion-icon>
+        <ion-label>Đăng xuất</ion-label>
+      </ion-button>
+    </div>
+
+  </div>
+
+  <ion-modal #modalSignOut class="ion-modal-small">
+    <ng-template>
+      <div class="p-4">
+        <div class="text-center">
+          <h4 class="mb-2">{{'SignOut'|translate}}</h4>
+          <p class="mb-4 fs-3">{{'SignOut_Confirm'|translate}}</p>
+        </div>
+        <div class="row">
+          <div class="col-6 pr-1">
+            <ion-button color="primary" fill="outline" expand="block" (click)="modalSignOut?.dismiss();">{{'Cancel'|translate}}</ion-button>
+          </div>
+          <div class="col-6 pl-1">
+            <ion-button color="primary" expand="block" (click)="signOut(modalSignOut)">{{'Confirm'|translate}}</ion-button>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </ion-modal>
+
+</ion-content>
+
+<app-footer-tabs></app-footer-tabs>

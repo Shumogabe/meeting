@@ -1,0 +1,29 @@
+<ion-content>
+
+  <div class="min-h-100 w-100 d-flex flex-column">
+
+    <div class="text-center py-5 area-primary">
+      <div class="d-flex justify-content-center">
+        <ion-img src="../../../assets/image/logo-icon.png"></ion-img>
+      </div>
+      <div class="mt-2 fs-32 fw-900">MONRE MEETING</div>
+      <div class="mt-0 mb-4 fs-20">Nền tảng họp trực tuyến</div>
+    </div>
+
+    <div class="flex-grow-1 d-flex align-items-center justify-content-center area-white">
+      <ion-img src="../../../assets/image/home/banner.svg" class="mw-360"></ion-img>
+    </div>
+  </div>
+
+</ion-content>
+
+<ion-footer collapse="fade">
+  <ion-toolbar>
+    <ion-button color="primary" fill="outline" expand="block" (click)="navigateByUrl(APP_ROUTE.ROOM_JOIN)">
+      <ion-label>Tham gia họp ngay</ion-label>
+    </ion-button>
+    <ion-button color="primary" expand="block" (click)="navigateByUrl(APP_ROUTE.AUTH)">
+      <ion-label>Đăng nhập</ion-label>
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

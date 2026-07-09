@@ -1,0 +1,63 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/" text=""></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="min-h-100 w-100 d-flex flex-column">
+
+    <div class="text-center py-5 area-primary">
+      <div class="d-flex justify-content-center">
+        <ion-img src="../../../assets/image/logo-icon.png"></ion-img>
+      </div>
+      <div class="mt-2 fs-32 fw-900">MONRE MEETING</div>
+      <div class="mt-0 mb-4 fs-20">Nền tảng họp trực tuyến</div>
+    </div>
+
+    <div class="flex-grow-1 d-flex justify-content-center py-5 area-white">
+
+      <div class="w-100 mw-360 px-4">
+        <div class="mb-4">
+          <div class="fw-500 fs-14 mb-1">Vui lòng điền mã tham gia dưới đây</div>
+          <ion-input mode="md" fill="outline" placeholder="Nhập mã tham gia" (ionChange)="changeRoomCode($event)" (keyup.enter)="submitRoomCode()"></ion-input>
+        </div>
+
+        <ion-button class="ion-no-margin" color="primary" expand="block" (click)="submitRoomCode()">
+          <ion-label>Tham gia</ion-label>
+        </ion-button>
+
+        @if(user){
+        <div class="mt-5 d-flex align-items-center justify-content-between">
+          <ion-chip>
+            <ion-avatar>
+              <img src="../../../assets/favicon/ms-icon-70x70.png" title="avatar" />
+            </ion-avatar>
+            <ion-label>{{user.name}}</ion-label>
+          </ion-chip>
+
+          <ion-button size="small" color="medium" fill="clear" (click)="signOut()">
+            <ion-label>Đổi tài khoản</ion-label>
+          </ion-button>
+        </div>
+        }
+        @else {
+        <div class="mt-5 d-flex align-items-center">
+          <div class="flex-grow-1 border-top"></div>
+          <div>
+            <ion-button size="small" color="primary" fill="clear" (click)="navigateByUrl(APP_ROUTE.AUTH)">
+              <ion-label>{{'SignIn'|translate}}</ion-label>
+            </ion-button>
+          </div>
+          <div class="flex-grow-1 border-top"></div>
+        </div>
+        }
+      </div>
+
+    </div>
+  </div>
+
+</ion-content>

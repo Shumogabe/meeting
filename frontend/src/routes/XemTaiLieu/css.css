@@ -1,0 +1,6 @@
+.pg-viewer-wrapper .pg-viewer#pg-viewer{
+    width: 100%;
+}
+#pg-viewer > div > div.pdf-viewer{
+    text-align: center;
+}

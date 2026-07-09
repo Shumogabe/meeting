@@ -1,0 +1,203 @@
+html {
+    overflow: -moz-scrollbars-vertical;
+    overflow-y: scroll;
+}
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    box-sizing: border-box;
+}
+.main-layout .MuiDrawer-paper {
+    width: 353px;
+    background-color: #fefeff;
+    border: none;
+}
+.modal {
+    z-index: 1300;
+}
+.text_a {
+    cursor: pointer;
+    color: #1890ff;
+    text-decoration: none;
+    background-color: transparent;
+    outline: none;
+    transition: color 0.3s;
+    text-decoration: underline;
+    -webkit-text-decoration-skip: objects;
+}
+.ag-grid-header-center .ag-header-cell-label {
+    justify-content: center;
+    text-align: center;
+    font-weight: 500;
+}
+.titleLinkForTrungTam {
+    cursor: pointer;
+    color: #007bbe;
+}
+
+.my-breadcrumb {
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #dee2e6;
+}
+.css-1wuw8dw-MuiBreadcrumbs-separator {
+    margin-left: 6px !important;
+    margin-right: 6px !important;
+}
+.component-chitiet {
+    height: calc(100vh - 50px);
+    position: fixed;
+    top: 85px;
+    right: 0px;
+    background-color: white;
+    overflow: auto;
+    z-index: 2;
+    transition: all 0.3s ease-in-out;
+    border-left: 1px solid #0000002d;
+    /* box-shadow: rgb(0 0 0 / 20%) 0px 8px 10px -5px, rgb(0 0 0 / 4%) 0px 16px 24px 2px, rgb(0 0 0 / 12%) 0px 6px 30px 5px; */
+    &__thaotac {
+        display: flex;
+        gap: 5px;
+        align-items: center;
+        margin-bottom: 10px;
+        margin-top: 10px;
+        padding-left: 10px;
+    }
+    &__content {
+        padding: 0px 15px 20px 15px;
+    }
+}
+.myform {
+    &__select {
+        display: flex;
+        gap: 13px;
+        margin-bottom: 15px;
+    }
+}
+.mymodal {
+    &_header {
+        padding: 8px 16px;
+        z-index: 99999;
+    }
+    &_body {
+        padding: 8px 16px;
+    }
+    &_title {
+        font-size: 18px;
+        color: #000000de;
+    }
+}
+.table__pagination {
+    padding: 15px 0px 15px 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    border-top: 0px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    display: flex !important;
+    justify-content: space-between;
+    align-items: center;
+    span {
+        color: grey;
+    }
+}
+.css-1n2mv2k :last-child::after {
+    content: 'N';
+    width: 5px;
+}
+.css-1n2mv2k :first-child::after {
+    content: '2';
+    width: 5px;
+}
+.css-1n2mv2k :nth-child(2)::after {
+    content: '3';
+    width: 5px;
+}
+.css-1n2mv2k :nth-child(3)::after {
+    content: '4';
+    width: 5px;
+}
+.css-1n2mv2k :nth-child(4)::after {
+    content: '5';
+    width: 5px;
+}
+.css-1n2mv2k :nth-child(5)::after {
+    content: '6';
+    width: 5px;
+}
+.css-1n2mv2k :nth-child(6)::after {
+    content: '7';
+    width: 5px;
+}
+
+.my-header-class {
+    color: #344767;
+    font-weight: 600;
+    font-size: 13px;
+}
+.ag-theme-alpine {
+    /* disable all borders */
+    --ag-borders: none;
+    --ag-header-background-color: #d4e9df;
+    /* then add back a border between rows */
+    // --ag-row-border-style: solid;
+    // --ag-row-border-width: 1px;
+    // --ag-row-border-color: #ccc;
+    .ag-center-cols-viewport,
+    .ag-center-cols-container {
+        min-height: 50px !important;
+    }
+    .center-class {
+        justify-content: center;
+        text-align: center;
+        font-weight: 500;
+        .ag-header-cell-label {
+            justify-content: center;
+        }
+    }
+    --ag-selected-row-background-color: none;
+    .ag-cell-focus {
+        --ag-range-selection-border-color: transparent !important;
+    }
+}
+.simple-input-editor {
+    width: 100%;
+    margin: 0px 0.5px;
+    height: 93%;
+    border-radius: 2px;
+    border: 1.5px solid #2195f398;
+    padding: 0px 10px;
+    outline: aqua;
+}
+.mythaotac {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    cursor: pointer;
+}
+.qcvn-mucdichsudung {
+    &__title {
+        margin-top: 5px;
+        display: flex;
+        justify-content: space-between;
+        padding-right: 10px;
+        align-items: center;
+        h3 {
+            color: #344767;
+            font-weight: 500;
+        }
+    }
+    &__table {
+        padding: 15px 10px 10px 10px;
+    }
+}
+:root {
+    --toastify-color-dark: #121212;
+    --toastify-color-info: #0288d1;
+    --toastify-color-success: #41aa46;
+    --toastify-color-warning: #f1c40f;
+    --toastify-color-error: #d32f2f;
+    --toastify-toast-min-height: 30px;
+}

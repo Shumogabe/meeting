@@ -1,0 +1,110 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/" text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>Tài liệu cuộc họp</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="refresherChange($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <div class="card-filter area-primary">
+    <div>
+      <ion-searchbar color="light" inputmode="search" placeholder="Nhập tên hoặc tiêu đề" [value]="filter.search" (ionInput)="searchChange($event)" [debounce]="1000" show-cancel-button="never"></ion-searchbar>
+    </div>
+    <div>Lọc theo ngày</div>
+    <div class="mt-2 d-flex align-items-center">
+
+      <ion-item lines="none" color="light" class="flex-grow-1" detail="false" button="true" (click)="presentModalDatetimePicker_DateFrom()">
+        <ion-label color="medium">{{filter.dateFrom ? APP_FUNC_FormatDate(filter.dateFrom,'DD/MM/YYYY') : 'Chọn ngày'}}</ion-label>
+        <ion-icon class="fs-16" color="primary" src="../../../assets/icon/calendar.svg"></ion-icon>
+      </ion-item>
+
+      <ion-icon class="fs-16 mx-2" src="../../../assets/icon/arrow-right.svg"></ion-icon>
+
+      <ion-item lines="none" color="light" class="flex-grow-1" detail="false" button="true" (click)="presentModalDatetimePicker_DateTo()">
+        <ion-label color="medium">{{filter.dateTo ? APP_FUNC_FormatDate(filter.dateTo,'DD/MM/YYYY') : 'Chọn ngày'}}</ion-label>
+        <ion-icon class="fs-16" color="primary" src="../../../assets/icon/calendar.svg"></ion-icon>
+      </ion-item>
+
+    </div>
+  </div>
+
+  <!-- <div class="mt-3">
+    <ion-segment mode="md" [scrollable]="true" [value]="tabActive" (ionChange)="changeTab($event)">
+      <ion-segment-button [value]="1">
+        <ion-label>Sắp tới</ion-label>
+      </ion-segment-button>
+      <ion-segment-button [value]="2">
+        <ion-label>Đã qua</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </div> -->
+
+  @if(!listData.length){
+  <div class="py-5">
+    <div class="d-flex align-items-center justify-content-center data-not-found">
+      <div>
+        <div class="d-flex justify-content-center">
+          <ion-img class="w-40" src="../../../assets/image/no-documents.svg"></ion-img>
+        </div>
+        <div class="mt-2 text-center">{{'DataNotFound'|translate}}</div>
+      </div>
+    </div>
+  </div>
+  }
+  @else {
+  <div class="ion-padding">
+    <ng-container [ngTemplateOutlet]="templateList"></ng-container>
+  </div>
+  }
+
+  <ion-infinite-scroll (ionInfinite)="infiniteChange($event)" *ngIf="paging.active">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>
+
+<app-footer-tabs></app-footer-tabs>
+
+<ng-template #templateList>
+  <ion-list lines="none">
+
+    @for(item of listData; track item){
+    <ion-item color="light" button="true" detail="true" (click)="navigateByUrl(APP_ROUTE.DOCUMENT.replace(':id',item.id))">
+      <ion-label>
+        <div class="d-flex align-items-center">
+          <ion-icon class="fs-24 mr-2" color="primary" src="../../../assets/icon/monitor-camera.svg"></ion-icon>
+          <b>{{item.title}}</b>
+        </div>
+        <div class="mt-2 d-flex align-items-center">
+          <ion-icon class="fs-16 mr-2" color="medium" src="../../../assets/icon/clock.svg"></ion-icon>
+          @if(APP_FUNC_FormatDate(item.startTime,'DD/MM/YYYY') == APP_FUNC_FormatDate(item.endTime,'DD/MM/YYYY')){
+          <ion-text class="fs-14" color="medium">{{APP_FUNC_FormatDate(item.startTime,'HH:mm')}} - {{APP_FUNC_FormatDate(item.endTime,'HH:mm')}}, {{APP_FUNC_FormatDate(item.startTime,'DD/MM/YYYY')}}</ion-text>
+          }
+          @else {
+          <ion-text class="fs-14" color="medium">
+            <div>{{APP_FUNC_FormatDate(item.startTime,'HH:mm, DD/MM/YYYY')}}</div>
+            <div>{{APP_FUNC_FormatDate(item.endTime,'HH:mm, DD/MM/YYYY')}}</div>
+          </ion-text>
+          }
+        </div>
+        @if(item.place){
+        <div class="mt-2 d-flex align-items-center">
+          <ion-icon class="fs-16 mr-2" color="medium" src="../../../assets/icon/location-marker.svg"></ion-icon>
+          <ion-text class="fs-14" color="medium">{{item.place}}</ion-text>
+        </div>
+        }
+        <div class="mt-2 d-flex align-items-center">
+          <ion-icon class="fs-16 mr-2" color="medium" src="../../../assets/icon/user-rounded.svg"></ion-icon>
+          <ion-text class="fs-14" color="medium">{{item.userChairMan?.ten_day_du}}</ion-text>
+        </div>
+      </ion-label>
+    </ion-item>
+    }
+
+  </ion-list>
+</ng-template>

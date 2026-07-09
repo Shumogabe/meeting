@@ -1,0 +1,46 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/" text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>Thông tin tài khoản</ion-title>
+    <!-- <ion-buttons slot="end">
+      <ion-button color="dark">
+        <ion-icon name="create-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons> -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  @if(user){
+
+  @if(user.name){
+  <div class="mb-4">
+    <div class="mb-1 fs-14 fw-300">Họ và tên</div>
+    <ion-item lines="none" color="light">
+      <ion-label>{{user.name}}</ion-label>
+    </ion-item>
+  </div>
+  }
+
+  @if(user.email){
+  <div class="mb-4">
+    <div class="mb-1 fs-14 fw-300">Email</div>
+    <ion-item lines="none" color="light">
+      <ion-label>{{user.email}}</ion-label>
+    </ion-item>
+  </div>
+  }
+
+  @if(user.mobile){
+  <div class="mb-4">
+    <div class="mb-1 fs-14 fw-300">Số điện thoại</div>
+    <ion-item lines="none" color="light">
+      <ion-label>{{APP_FUNC_FormatMobileNumber(user.mobile)}}</ion-label>
+    </ion-item>
+  </div>
+  }
+
+  }
+</ion-content>

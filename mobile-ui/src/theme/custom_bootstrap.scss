@@ -1,0 +1,120 @@
+// Required
+@import "../../node_modules/bootstrap/scss/functions";
+
+// Default variable overrides
+$embed-responsive-aspect-ratios: (
+    (3:2)
+);
+
+// Required
+@import "../../node_modules/bootstrap/scss/variables";
+@import "../../node_modules/bootstrap/scss/mixins";
+
+// Optional Bootstrap components here
+@import "../../node_modules/bootstrap/scss/grid";
+@import "../../node_modules/bootstrap/scss/utilities";
+
+//
+.min-w-100 {
+    min-width: 100% !important;
+}
+
+.min-h-100 {
+    min-height: 100% !important;
+}
+
+.top-0 {
+    top: 0;
+}
+
+.top-1 {
+    top: ($spacer * .25);
+}
+
+.top-2 {
+    top: ($spacer * .5);
+}
+
+.top-3 {
+    top: $spacer ;
+}
+
+.top-4 {
+    top: ($spacer * 1.5);
+}
+
+.top-5 {
+    top: ($spacer * 3);
+}
+
+.bottom-0 {
+    bottom: 0;
+}
+
+.bottom-1 {
+    bottom: ($spacer * .25);
+}
+
+.bottom-2 {
+    bottom: ($spacer * .5);
+}
+
+.bottom-3 {
+    bottom: $spacer ;
+}
+
+.bottom-4 {
+    bottom: ($spacer * 1.5);
+}
+
+.bottom-5 {
+    bottom: ($spacer * 3);
+}
+
+.left-0 {
+    left: 0;
+}
+
+.left-1 {
+    left: ($spacer * .25);
+}
+
+.left-2 {
+    left: ($spacer * .5);
+}
+
+.left-3 {
+    left: $spacer ;
+}
+
+.left-4 {
+    left: ($spacer * 1.5);
+}
+
+.left-5 {
+    left: ($spacer * 3);
+}
+
+.right-0 {
+    right: 0;
+}
+
+.right-1 {
+    right: ($spacer * .25);
+}
+
+.right-2 {
+    right: ($spacer * .5);
+}
+
+.right-3 {
+    right: $spacer ;
+}
+
+.right-4 {
+    right: ($spacer * 1.5);
+}
+
+.right-5 {
+    right: ($spacer * 3);
+}

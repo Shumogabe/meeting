@@ -1,0 +1,177 @@
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.word-break-all {
+    word-break: break-all;
+}
+
+.border-dashed {
+    border-style: dashed !important;
+}
+
+.data-not-found {
+    width: 12.5rem;
+    height: 7rem;
+    margin: auto;
+
+    background: #FFFFFF;
+    color: #9DA3AF;
+    border: 1px solid #E6E7EA;
+    border-radius: 0.5rem;
+    font-weight: 500;
+}
+
+input,
+textarea,
+button,
+select,
+video,
+audio,
+iframe {
+    outline: none;
+    box-shadow: none !important;
+
+    &:hover,
+    &:active,
+    &:focus {
+        outline: none;
+        box-shadow: none !important;
+    }
+}
+
+// This variable affects the `.fs-*` classes.
+@for $i from 3 through 36 {
+    $font-size: $i * 2;
+    $font-size-rem: calc($font-size / 16);
+    // stuff
+
+    .fs-#{$font-size} {
+        font-size: #{$font-size-rem}rem;
+    }
+
+    ion-icon.fs-#{$font-size} {
+        min-width: #{$font-size-rem}rem;
+        min-height: #{$font-size-rem}rem;
+    }
+
+    .fs-#{$font-size}00 {
+        font-size: #{$font-size-rem}rem;
+    }
+
+    ion-icon.fs-#{$font-size}00 {
+        min-width: #{$font-size-rem}rem;
+        min-height: #{$font-size-rem}rem;
+    }
+}
+
+// This variable affects the `.fw-*` classes. VD: .fw-4 { font-weight: 400; }
+$font-weights: (
+    (1, 2, 3, 4, 5, 6, 7, 8, 9)
+);
+
+@each $font-weight in $font-weights {
+    .fw-#{$font-weight} {
+        font-weight: $font-weight*100;
+    }
+
+    .fw-#{$font-weight}00 {
+        font-weight: #{$font-weight}00;
+    }
+}
+
+// This variable affects the `.max-w-*` classes. VD: .max-w-320 { max-width: 20rem; }
+@for $i from 1 through 50 {
+    $size-cls: calc($i * 2);
+    $size-rem: calc($i * 2 / 16);
+
+    .w-#{$size-cls} {
+        width: #{$size-rem}rem;
+    }
+
+    .min-w-#{$size-cls} {
+        min-width: #{$size-rem}rem;
+    }
+
+    .max-w-#{$size-cls} {
+        max-width: #{$size-rem}rem;
+    }
+
+    .h-#{$size-cls} {
+        height: #{$size-rem}rem;
+    }
+
+    .min-h-#{$size-cls} {
+        min-height: #{$size-rem}rem;
+    }
+
+    .max-h-#{$size-cls} {
+        max-height: #{$size-rem}rem;
+    }
+
+    .line-height-#{$size-cls} {
+        line-height: #{$size-rem}rem;
+    }
+
+    .w-#{$size-cls}px {
+        width: #{$size-rem}rem;
+    }
+
+    .min-w-#{$size-cls}px {
+        min-width: #{$size-rem}rem;
+    }
+
+    .max-w-#{$size-cls}px {
+        max-width: #{$size-rem}rem;
+    }
+
+    .h-#{$size-cls}px {
+        height: #{$size-rem}rem;
+    }
+
+    .min-h-#{$size-cls}px {
+        min-height: #{$size-rem}rem;
+    }
+
+    .max-h-#{$size-cls}px {
+        max-height: #{$size-rem}rem;
+    }
+
+    .line-height-#{$size-cls}px {
+        line-height: #{$size-rem}rem;
+    }
+
+}
+
+@for $i from 6 through 100 {
+    $size-cls: calc($i * 20);
+    $size-rem: calc($i * 20 / 16);
+
+    .w-#{$size-cls} {
+        width: #{$size-rem}rem;
+    }
+
+    .min-w-#{$size-cls} {
+        min-width: #{$size-rem}rem;
+    }
+
+    .max-w-#{$size-cls} {
+        max-width: #{$size-rem}rem;
+    }
+
+    .h-#{$size-cls} {
+        height: #{$size-rem}rem;
+    }
+
+    .min-h-#{$size-cls} {
+        min-height: #{$size-rem}rem;
+    }
+
+    .max-h-#{$size-cls} {
+        max-height: #{$size-rem}rem;
+    }
+
+    .line-height-#{$size-cls} {
+        line-height: #{$size-rem}rem;
+    }
+}

@@ -1,0 +1,11 @@
+framework module VNPTID {
+  umbrella header "VNPTID.h"
+  export *
+
+  module * { export * }
+}
+
+module VNPTID.Swift {
+  header "VNPTID-Swift.h"
+  requires objc
+}

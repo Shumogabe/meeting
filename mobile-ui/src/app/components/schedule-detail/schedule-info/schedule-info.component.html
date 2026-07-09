@@ -1,0 +1,193 @@
+<div class="min-h-100 d-flex flex-column">
+
+  <div class="flex-grow-1 ion-padding bg-light">
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h5 class="my-0 fw-700">{{itemData.title}}</h5>
+      @if(!isEnd){
+      <ion-chip [color]="ColorStatusSchedule(itemData.status)" class="ion-no-margin fs-10 min-h-20 py-0 no-opacity">
+        <ion-label>{{StatusSchedule.getStatusName(itemData.status)}}</ion-label>
+      </ion-chip>
+      }
+    </div>
+
+    <div class="mt-3 d-flex align-items-start">
+      <ion-icon class="fs-16 mr-2" color="medium" src="../../../assets/icon/clock.svg"></ion-icon>
+      @if(APP_FUNC_FormatDate(itemData.startTime,'DD/MM/YYYY') == APP_FUNC_FormatDate(itemData.endTime,'DD/MM/YYYY')){
+      <ion-text class="fs-14" color="medium">{{APP_FUNC_FormatDate(itemData.startTime,'HH:mm')}} - {{APP_FUNC_FormatDate(itemData.endTime,'HH:mm')}}, {{APP_FUNC_FormatDate(itemData.startTime,'DD/MM/YYYY')}}</ion-text>
+      }
+      @else {
+      <ion-text class="fs-14" color="medium">
+        <div>{{APP_FUNC_FormatDate(itemData.startTime,'HH:mm, DD/MM/YYYY')}}</div>
+        <div>{{APP_FUNC_FormatDate(itemData.endTime,'HH:mm, DD/MM/YYYY')}}</div>
+      </ion-text>
+      }
+    </div>
+
+    @if(itemData.server?.title){
+    <div class="mt-2 d-flex align-items-center">
+      <ion-icon class="fs-16 mr-2" color="medium" src="../../../../assets/icon/globe-alt.svg"></ion-icon>
+      <ion-text class="fs-14" color="medium">{{itemData.server?.title}}</ion-text>
+    </div>
+    }
+
+    @if(itemData.place){
+    <div class="mt-2 d-flex align-items-center">
+      <ion-icon class="fs-16 mr-2" color="medium" src="../../../assets/icon/location-marker.svg"></ion-icon>
+      <ion-text class="fs-14" color="medium">{{itemData.place}}</ion-text>
+    </div>
+    }
+
+    @if(itemData.roomName){
+    <div class="mt-2 d-flex align-items-center" (click)="copyRoomCode(itemData.roomName)">
+      <ion-icon class="fs-16 mr-2" color="medium" src="../../../../assets/icon/desktop-computer.svg"></ion-icon>
+      <ion-text class="fs-14" color="medium">{{itemData.roomName}}</ion-text>
+    </div>
+    }
+
+    @if(itemData.password){
+    <div class="mt-2 d-flex align-items-center" (click)="changeIsPwd(!isShowPwd)">
+      <ion-icon class="fs-16 mr-2" color="medium" name="key-outline"></ion-icon>
+      <ion-text class="fs-14" color="medium">{{isShowPwd ? itemData.password : '******'}}</ion-text>
+    </div>
+    }
+
+    @if(itemData.content){
+    <div class="mt-4">
+      <b>Nội dung</b>
+      <div class="mt-2">
+        <ion-note color="medium" [innerHTML]="itemData.content"></ion-note>
+      </div>
+    </div>
+    }
+
+    @if(itemData.userChairMan?.id){
+    <div class="mt-4">
+      <b>Chủ trì</b>
+      <div class="mt-2">
+        <ion-chip color="transparent" class="ion-no-margin">
+          <ion-avatar>
+            <img src="../../../../assets/image/default-avatar.svg" />
+          </ion-avatar>
+          <ion-label>
+            <b>{{itemData.userChairMan.ten_day_du}}</b>
+            <div>{{itemData.userChairMan.email}}</div>
+          </ion-label>
+        </ion-chip>
+      </div>
+    </div>
+    }
+
+    @if(itemData.userShareRole?.id){
+    <div class="mt-4">
+      <b>Ủy quyền điều hành</b>
+      <div class="mt-2">
+        <ion-chip color="transparent" class="ion-no-margin">
+          <ion-avatar>
+            <img src="../../../../assets/image/default-avatar.svg" />
+          </ion-avatar>
+          <ion-label>
+            <b>{{itemData.userShareRole.ten_day_du}}</b>
+            <div>{{itemData.userShareRole.email}}</div>
+          </ion-label>
+        </ion-chip>
+      </div>
+    </div>
+    }
+
+    <div class="mt-4">
+      <div class="d-flex align-items-center justify-content-between">
+        <b>Người tham gia ({{listUser.length}})</b>
+
+        @if(isAddEdit){
+        @if([StatusSchedule.BANNHAP,StatusSchedule.CHODUYET,StatusSchedule.DADUYET,StatusSchedule.HUYDUYET].includes(itemData.status)){
+        <ion-button class="m-0 min-w-24 min-h-24" size="small" color="primary" fill="outline" (click)="presentModalUserSearch_invite()">
+          <ion-icon slot="start" name="add-outline"></ion-icon>
+          <ion-label>Mời tham gia</ion-label>
+        </ion-button>
+        }
+        }
+      </div>
+      <div>
+        @for(item of listUser; track item){
+        <div class="mt-2">
+          <ion-chip color="transparent" class="ion-no-margin">
+            <ion-avatar>
+              <img src="../../../../assets/image/default-avatar.svg" />
+            </ion-avatar>
+            <ion-label>{{item.email}}</ion-label>
+          </ion-chip>
+        </div>
+        }
+      </div>
+    </div>
+
+  </div>
+
+  <ion-footer collapse="fade">
+    <ion-toolbar>
+      @if(itemData.isDeleted){
+      <div class="d-flex align-items-center justify-content-end">
+        <ion-chip>
+          <ion-label>Dữ liệu đã bị xóa</ion-label>
+        </ion-chip>
+      </div>
+      }
+      @else{
+      <div class="d-flex align-items-center justify-content-end">
+        @if(Role.checkRole(userRoles,Role.APPROVE) && !isEnd){
+        @if(itemData.status==StatusSchedule.DADUYET || itemData.status==StatusSchedule.CONGBO){
+        <ion-button class="flex-grow-1" color="primary" fill="outline" (click)="confirmScheduleCancel(itemData.id)">
+          <ion-label>Hủy xác nhận</ion-label>
+        </ion-button>
+        }
+        @else {
+        <ion-button class="flex-grow-1" color="primary" (click)="confirmScheduleOk(itemData.id)">
+          <ion-label>Xác nhận</ion-label>
+        </ion-button>
+        }
+        }
+
+        @if(itemData.status==StatusSchedule.DADUYET || itemData.status==StatusSchedule.CONGBO){
+        <ion-button class="flex-grow-1" color="primary" expand="block" (click)="navigateByUrl(APP_ROUTE.ROOM_EXTERNAL_ID.replace(':id',itemData.id))">
+          <ion-label>Tham gia</ion-label>
+        </ion-button>
+        }
+
+        @if(isAddEdit){
+        @if(itemData.status==StatusSchedule.DADUYET || itemData.status==StatusSchedule.CONGBO){
+
+        }
+        @else{
+        <ion-button class="min-w-120" color="medium" fill="outline" expand="block" (click)="presentModalScheduleUpdate()">
+          <ion-label>Chỉnh sửa</ion-label>
+        </ion-button>
+        <ion-button class="min-w-80" color="danger" fill="outline" expand="block" (click)="modalConfirmDelete?.present()">
+          <ion-label>Xóa</ion-label>
+        </ion-button>
+        }
+        }
+      </div>
+      }
+    </ion-toolbar>
+  </ion-footer>
+</div>
+
+<ion-modal #modalConfirmDelete class="ion-modal-small">
+  <ng-template>
+    <div class="p-4">
+      <div class="text-center">
+        <h4 class="mb-2">Xóa lịch họp</h4>
+        <p class="mb-4 fs-3">Bạn có chắc muốn xóa lịch họp này?</p>
+      </div>
+      <div class="row">
+        <div class="col-6 pr-1">
+          <ion-button color="primary" fill="outline" expand="block" (click)="modalConfirmDelete?.dismiss();">{{'Cancel'|translate}}</ion-button>
+        </div>
+        <div class="col-6 pl-1">
+          <ion-button color="danger" expand="block" (click)="confirmDelete(modalConfirmDelete)">{{'Delete'|translate}}</ion-button>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</ion-modal>

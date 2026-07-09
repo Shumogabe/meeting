@@ -1,0 +1,204 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/" text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{'MeetingSchedule'|translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="light">
+  <ion-refresher slot="fixed" (ionRefresh)="refresherChange($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <div class="card-filter area-primary">
+    <div>
+      <ion-searchbar color="light" inputmode="search" placeholder="Nhập tên hoặc tiêu đề" [value]="filter.search" (ionInput)="searchChange($event)" [debounce]="1000" show-cancel-button="never"></ion-searchbar>
+    </div>
+    <div class="mt-3">Lọc theo ngày</div>
+    <div class="mt-2 d-flex align-items-center">
+
+      <ion-item lines="none" color="light" class="flex-grow-1" detail="false" button="true" (click)="presentModalDatetimePicker_DateFrom()">
+        <ion-label color="medium">{{filter.dateFrom ? APP_FUNC_FormatDate(filter.dateFrom,'DD/MM/YYYY') : 'Chọn ngày'}}</ion-label>
+        <ion-icon class="fs-16" color="primary" src="../../../assets/icon/calendar.svg"></ion-icon>
+      </ion-item>
+
+      <ion-icon class="fs-16 mx-2" src="../../../assets/icon/arrow-right.svg"></ion-icon>
+
+      <ion-item lines="none" color="light" class="flex-grow-1" detail="false" button="true" (click)="presentModalDatetimePicker_DateTo()">
+        <ion-label color="medium">{{filter.dateTo ? APP_FUNC_FormatDate(filter.dateTo,'DD/MM/YYYY') : 'Chọn ngày'}}</ion-label>
+        <ion-icon class="fs-16" color="primary" src="../../../assets/icon/calendar.svg"></ion-icon>
+      </ion-item>
+
+    </div>
+  </div>
+
+  <div class="mt-3">
+    <ion-segment mode="md" [scrollable]="true" [value]="tabActive" (ionChange)="changeTab($event)">
+      <ion-segment-button [value]="-1">
+        <ion-label>Đang trực tuyến</ion-label>
+      </ion-segment-button>
+
+      @for(item of StatusSchedules; track item){
+      <ion-segment-button [value]="item.id">
+        <ion-label>{{item.title}}</ion-label>
+      </ion-segment-button>
+      }
+
+      <ion-segment-button [value]="-2">
+        <ion-label>Đã kết thúc</ion-label>
+      </ion-segment-button>
+      <ion-segment-button [value]="-3">
+        <ion-label>Đã xóa</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+  <div class="ion-padding">
+    @if(filter.search){
+    <div class="mb-3"><small>Tìm thấy {{listData.length}} dữ liệu với từ khóa</small> "<b>{{filter.search}}</b>"</div>
+    }
+
+    @if(!listData.length){
+    <div class="py-5">
+      <div class="d-flex align-items-center justify-content-center data-not-found">
+        <div>
+          <div class="d-flex justify-content-center">
+            <ion-img class="w-40" src="../../../assets/image/no-documents.svg"></ion-img>
+          </div>
+          <div class="mt-2 text-center">{{'DataNotFound'|translate}}</div>
+        </div>
+      </div>
+    </div>
+    }
+    @else {
+    <ng-container [ngTemplateOutlet]="templateList"></ng-container>
+    }
+
+  </div>
+
+  <ion-modal #modalConfirmRestore class="ion-modal-small">
+    <ng-template>
+      <div class="p-4">
+        <div class="text-center">
+          <h4 class="mb-2">Khôi phục lịch họp</h4>
+          <p class="mb-4 fs-3">Bạn có chắc muốn khôi phục lịch họp này?</p>
+        </div>
+        <div class="row">
+          <div class="col-6 pr-1">
+            <ion-button color="primary" fill="outline" expand="block" (click)="modalConfirmRestore?.dismiss();">{{'Cancel'|translate}}</ion-button>
+          </div>
+          <div class="col-6 pl-1">
+            <ion-button color="primary" expand="block" (click)="confirmRestore(modalConfirmRestore)">{{'Restore'|translate}}</ion-button>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </ion-modal>
+
+  <ion-modal #modalConfirmDelete class="ion-modal-small">
+    <ng-template>
+      <div class="p-4">
+        <div class="text-center">
+          <h4 class="mb-2">Xóa lịch họp</h4>
+          <p class="mb-4 fs-3">Bạn có chắc muốn xóa hoàn toàn lịch họp này?</p>
+        </div>
+        <div class="row">
+          <div class="col-6 pr-1">
+            <ion-button color="primary" fill="outline" expand="block" (click)="modalConfirmDelete?.dismiss();">{{'Cancel'|translate}}</ion-button>
+          </div>
+          <div class="col-6 pl-1">
+            <ion-button color="danger" expand="block" (click)="confirmDelete(modalConfirmDelete)">{{'Delete'|translate}}</ion-button>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </ion-modal>
+
+  <ion-infinite-scroll (ionInfinite)="infiniteChange($event)" *ngIf="paging.active">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+</ion-content>
+
+<app-footer-tabs></app-footer-tabs>
+
+<ng-template #templateList>
+  @for(group of groupStartDate(); track group){
+  <div class="mb-4">
+    <div class="mb-2">
+      <ion-text color="primary">
+        <b>{{group}}</b>
+      </ion-text>
+    </div>
+
+    @for(item of filterStartDate(group); track item){
+    <div class="mb-2">
+      <ng-container [ngTemplateOutlet]="templateSchedule" [ngTemplateOutletContext]="{ $implicit: item }"></ng-container>
+    </div>
+    }
+  </div>
+  }
+</ng-template>
+
+<ng-template #templateSchedule let-item>
+  <div class="card-schedule" [attr.color]="ColorStatusSchedule(item.status)">
+    <div>
+      <div (click)="navigateByUrl(APP_ROUTE.SCHEDULE_DETAIL_ID.replace(':id',item.id))">
+        <div>
+          <b>{{item.title}}</b>
+        </div>
+        <div class="mt-3 d-flex align-items-center">
+          <ion-icon class="fs-16 mr-3" color="primary" src="../../../assets/icon/clock.svg"></ion-icon>
+          <ion-text class="fs-14" color="medium">{{APP_FUNC_FormatDate(item.startTime,'HH:mm')}} - {{APP_FUNC_FormatDate(item.endTime,'HH:mm')}}</ion-text>
+        </div>
+        @if(item.place){
+        <div class="mt-1 d-flex align-items-center">
+          <ion-icon class="fs-16 mr-3" color="primary" src="../../../assets/icon/location-marker.svg"></ion-icon>
+          <ion-text class="fs-14" color="medium">{{item.place}}</ion-text>
+        </div>
+        }
+      </div>
+      <div class="mt-2 d-flex align-items-end justify-content-between">
+        <div class="lst-avatar d-flex align-items-center">
+          @if(item.meetingMember?.length <=3){ @for(member of item.meetingMember||[]; track member){ <ion-avatar class="w-24 h-24" [title]=member.email>
+            <img src="../../../assets/image/default-avatar.svg" />
+            </ion-avatar>
+            }
+            }
+            @else {
+            @for(i of [0,1,2]; track i){
+            <ion-avatar class="w-24 h-24" [title]=item.meetingMember[i].email>
+              <img src="../../../assets/image/default-avatar.svg" />
+            </ion-avatar>
+            }
+            <span class="avatar w-24 h-24 d-flex align-items-center justify-content-center">
+              <span>+{{item.meetingMember.length - 3}}</span>
+            </span>
+            }
+        </div>
+        <div>
+          @if(item.isDeleted){
+          <ion-button class="ion-no-margin mr-1" size="small" color="warning" fill="outline" (click)="roomId=item.id;modalConfirmRestore?.present()">
+            <ion-label>Khôi phục</ion-label>
+          </ion-button>
+          <ion-button class="ion-no-margin" size="small" color="danger" (click)="roomId=item.id;modalConfirmDelete?.present()">
+            <ion-label>Xóa hoàn toàn</ion-label>
+          </ion-button>
+          }
+          @else if(item.status==StatusSchedule.DADUYET || item.status==StatusSchedule.CONGBO){
+          <ion-button class="ion-no-margin" size="small" color="primary" (click)="navigateByUrl(APP_ROUTE.ROOM_EXTERNAL_ID.replace(':id',item.id))">
+            <ion-label>Tham gia</ion-label>
+          </ion-button>
+          }
+          @else if(tabActive != -2){
+          <ion-chip [color]="ColorStatusSchedule(item.status)" class="ion-no-margin fs-10 min-h-20 py-0">
+            <ion-label>{{StatusSchedule.getStatusName(item.status)}}</ion-label>
+          </ion-chip>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>

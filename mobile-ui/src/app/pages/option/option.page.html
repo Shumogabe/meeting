@@ -1,0 +1,56 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/" text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>Cấu hình cuộc họp</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="onIonRefresher($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  @if(!listData.length){
+  <div class="py-5">
+    <div class="d-flex align-items-center justify-content-center data-not-found">
+      <div>
+        <div class="d-flex justify-content-center">
+          <ion-img class="w-40" src="../../../assets/image/no-documents.svg"></ion-img>
+        </div>
+        <div class="mt-2 text-center">{{'DataNotFound'|translate}}</div>
+      </div>
+    </div>
+  </div>
+  }
+  @else {
+  <div class="ion-padding">
+    <ng-container [ngTemplateOutlet]="templateList"></ng-container>
+  </div>
+  }
+
+  <ion-infinite-scroll (ionInfinite)="onIonInfinite($event)" *ngIf="paging.active">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>
+
+<ion-footer collapse="fade">
+  <ion-toolbar>
+    <ion-button color="primary" expand="block" (click)="presentModalOptionAdd()">
+      <ion-label>Thêm cấu hình</ion-label>
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>
+
+<ng-template #templateList>
+  <ion-list lines="none">
+
+    @for(item of listData; track item){
+    <ion-item button="true" detail="true" (click)="navigateByUrl(APP_ROUTE.OPTION_DETAIL_ID.replace(':id',item.id))">
+      <ion-label>{{item.label_vn}}</ion-label>
+    </ion-item>
+    }
+
+  </ion-list>
+</ng-template>

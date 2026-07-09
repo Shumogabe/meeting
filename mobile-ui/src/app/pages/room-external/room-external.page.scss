@@ -1,0 +1,15 @@
+ion-input {
+    &[fill="outline"] {
+        --border-radius: 0;
+    }
+}
+
+ion-header {
+    ion-toolbar {
+        ion-title {
+            padding-inline-start: 2.25rem;
+            padding-inline-end: 8rem;
+            text-align: left;
+        }
+    }
+}

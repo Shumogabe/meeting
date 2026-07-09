@@ -1,0 +1,137 @@
+{
+  "CauHinh": {
+    "KeHoachHop": [
+      {
+        "tenhienthi": "",
+        "tencauhinh": "",
+        "giatri": ""
+      },
+      {
+        "tenhienthi": "",
+        "tencauhinh": "",
+        "giatri": ""
+      }
+    ],
+    "ChuongTrinh": [
+      {
+        "tenhienthi": "",
+        "tencauhinh": "",
+        "giatri": ""
+      },
+      {
+        "tenhienthi": "",
+        "tencauhinh": "",
+        "giatri": ""
+      }
+    ],
+    "TaiLieu": [
+      {
+        "tenhienthi": "",
+        "tencauhinh": "",
+        "giatri": ""
+      },
+      {
+        "tenhienthi": "",
+        "tencauhinh": "",
+        "giatri": ""
+      }
+    ],
+    "ThanhPhanThamGia": [
+      {
+        "tenhienthi": "",
+        "tencauhinh": "",
+        "giatri": ""
+      },
+      {
+        "tenhienthi": "",
+        "tencauhinh": "",
+        "giatri": ""
+      }
+    ],
+    "BieuQuyet": [
+      {
+        "tenhienthi": "",
+        "tencauhinh": "",
+        "giatri": ""
+      },
+      {
+        "tenhienthi": "",
+        "tencauhinh": "",
+        "giatri": ""
+      }
+    ],
+    "BaoCaoThongKe": [
+      {
+        "tenhienthi": "Thời gian hiển thị biểu đồ mặc định (ngày)",
+        "tencauhinh": "BaoCaoThongKe_TimeDefault_Chart",
+        "giatri": "30"
+      },
+      {
+        "tenhienthi": "Thời gian xuất excel báo cáo, thống kê mặc định (ngày)",
+        "tencauhinh": "BaoCaoThongKe_TimeDefault_Excel",
+        "giatri": "30"
+      }
+    ],
+    "SuKien": [],
+    "NguoiDung": [
+      {
+        "tenhienthi": "",
+        "tencauhinh": "",
+        "giatri": ""
+      },
+      {
+        "tenhienthi": "",
+        "tencauhinh": "",
+        "giatri": ""
+      }
+    ],
+    "HeThong": [
+      {
+        "tenhienthi": "",
+        "tencauhinh": "",
+        "giatri": ""
+      },
+      {
+        "tenhienthi": "",
+        "tencauhinh": "",
+        "giatri": ""
+      }
+    ],
+    "SMS": [
+      {
+        "tenhienthi": "api gửi sms",
+        "tencauhinh": "Sms_sender",
+        "giatri": "{\"api\":\"http://dvcapi.monre.gov.vn/api/SMSDVC/sendSMS?reqid=1\"}"
+      }
+    ],
+    "ThongBaoLichHop": [
+      {
+        "tenhienthi": "Đường dẫn phòng họp",
+        "tencauhinh": "ThongBaoLichHop_schedule_link",
+        "giatri": "https://meeting.monre.gov.vn/hop-truc-tuyen/phong-hop/"
+      },
+      {
+        "tenhienthi": "Logo",
+        "tencauhinh": "ThongBaoLichHop_logo",
+        "giatri": "https://epr.monre.gov.vn/images/monre1.png"
+      },
+      {
+        "tenhienthi": "Thông tin mail liên hệ",
+        "tencauhinh": "ThongBaoLichHop_contact_mail",
+        "giatri": "portal@monre.gov.vn"
+      },
+      {
+        "tenhienthi": "Thông tin số điện thoại liên hệ",
+        "tencauhinh": "ThongBaoLichHop_contact_phone",
+        "giatri": "(0243) 7956868"
+      }
+    ],
+    "LichHop": [
+      {
+        "tenhienthi": "Thời gian cho cuộc họp nhanh",
+        "tencauhinh": "LichHop_endTime",
+        "giatri": "28800"
+      }
+    ]
+  }
+}

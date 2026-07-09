@@ -1,0 +1,45 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/" text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{'UseManual'|translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="onIonRefresher($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  @if(!helps.length){
+  <div class="py-5">
+    <div class="d-flex align-items-center justify-content-center data-not-found">
+      <div>
+        <div class="d-flex justify-content-center">
+          <ion-img class="w-40" src="../../../assets/image/no-documents.svg"></ion-img>
+        </div>
+        <div class="mt-2 text-center">{{'DataNotFound'|translate}}</div>
+      </div>
+    </div>
+  </div>
+  }
+  @else {
+  <div class="container py-3">
+    <ion-accordion-group mode="ios" (ionChange)="changeAccordion($event)">
+      <ng-container *ngFor="let item of helps">
+        <ion-accordion [value]="item.HelpId">
+          <ion-item slot="header" lines="none" color="light">
+            <ion-label>{{item.Title}}</ion-label>
+          </ion-item>
+          <div slot="content" class="ion-padding" [innerHTML]="item.Content"></div>
+        </ion-accordion>
+      </ng-container>
+    </ion-accordion-group>
+  </div>
+  }
+
+  <ion-infinite-scroll (ionInfinite)="onIonInfinite($event)" *ngIf="paging.active">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

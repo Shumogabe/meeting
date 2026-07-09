@@ -1,0 +1,148 @@
+footer.menu-toggle-meeting {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    /* bottom: 3vh; */
+    background: none;
+    margin-left: -25%;
+    z-index: 11;
+}
+
+footer.menu-toggle-meeting .menu {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* padding-left: 17rem;
+    padding-left: 0; */
+}
+
+footer.menu-toggle-meeting .menu .toggle {
+    /* width: 50px;
+    height: 50px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.15);
+    font-size: 2em;
+    transition: transform 1.25s; */
+    width: 160vh;
+    height: 9vh;
+    z-index: 10000;
+}
+
+footer.menu-toggle-meeting .menu .toggle.active {
+    transform: rotate(315deg);
+}
+
+footer.menu-toggle-meeting .menu .list,
+#vert-tabs-tab {
+    display: none;
+    list-style-type: none;
+}
+
+footer.menu-toggle-meeting .menu .list li button.btn-btn {
+    width: 50px;
+    height: 50px;
+}
+
+footer.menu-toggle-meeting .menu .list.d-flex.active {
+    width: 70vh;
+    justify-content: center;
+    align-items: center;
+    height: 9vh;
+}
+
+footer.menu-toggle-meeting .menu .list li .dropdown-menu-toggle {
+    display: block;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    will-change: transform;
+    /* background-color: #1e6abb;
+    border: 1px solid #1e6abb; */
+    border-radius: 0;
+    box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 18%);
+    padding: 0;
+    right: auto;
+    bottom: auto;
+    float: left;
+    min-width: 10rem;
+    font-size: 1rem;
+    text-align: left;
+    list-style: none;
+    background-clip: padding-box;
+}
+
+footer.menu-toggle-meeting .menu .list li .dropdown-menu-toggle .dropdown-item {
+    color: #fff;
+}
+
+footer.menu-toggle-meeting .menu .list li .dropdown-menu-toggle .dropdown-item:hover {
+    color: #000;
+}
+
+footer.menu-toggle-meeting .menu .list li .dropdown-menu-toggle .dropdown-item.active {
+    background-color: #1e6abb;
+    border: 1px solid #1e6abb;
+}
+
+#meeting-sidebar {
+    /* z-index: 11; */
+}
+
+#vert-tabs-tab div {
+    cursor: pointer;
+}
+
+#vert-tabs-tab div.nav-link.active {
+    background-color: #fff;
+    color: #226ccc;
+    border-radius: 0 20px 20px 0;
+}
+
+#meeting-sidebar div.toggle-menu-sider {
+    width: 15px;
+    height: calc(100vh - 86px);
+}
+
+#meeting-sidebar {
+    margin: -13px 0 8px 0;
+    padding: 0;
+}
+
+#vert-tabs-tab {
+    /* padding-top: 50%; */
+    color: rgb(255, 255, 255);
+    background: #1e6abb;
+    /* border-radius: 20px; */
+    max-height: 100vh;
+    /* margin-left: -8px; */
+}
+
+#root>div>div.content-wrapper {
+    min-height: calc(100vh - 74px) !important;
+}
+
+@media only screen and (max-width: 360px) {
+    .user-enter-room-wrapper .container {
+        padding-left: 38.5% !important;
+    }
+}
+
+@media only screen and (min-width: 361px) and (max-width: 1023px) {
+    .user-enter-room-wrapper .container {
+        padding-left: 39% !important;
+    }
+}
+#form-user-enter-room > div > label{
+    font-weight: unset;    
+}

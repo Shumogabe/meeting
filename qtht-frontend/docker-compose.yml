@@ -1,0 +1,6 @@
+version: '3.4'
+
+services:
+  moitruong-vanhanh-spa-2:
+    build: .
+    image: anhmd/moitruongvanhanhspa2:moitruong-pro

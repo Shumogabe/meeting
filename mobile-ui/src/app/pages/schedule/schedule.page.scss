@@ -1,0 +1,105 @@
+.area-primary {
+    background-color: var(--ion-color-primary);
+    color: var(--ion-color-primary-contrast);
+    border-radius: 0 0 1.5rem 1.5rem;
+}
+
+.card-filter {
+    padding: 0 1rem 1rem;
+
+    ion-searchbar {
+        padding: 0;
+    }
+
+    ion-item {
+        --min-height: 2.75rem;
+        --border-radius: 0.75rem;
+    }
+}
+
+ion-segment {
+    ion-segment-button {
+        ion-label {
+            font-size: 0.875rem;
+            text-transform: initial;
+        }
+    }
+}
+
+ion-chip {
+    flex: none;
+
+    ion-label {
+        white-space: nowrap;
+    }
+}
+
+.card-schedule {
+    --line-color: var(--ion-color-primary);
+
+    &[color="primary"]::before {
+        --line-color: var(--ion-color-primary);
+    }
+
+    &[color="success"]::before {
+        --line-color: var(--ion-color-success);
+    }
+
+    &[color="warning"]::before {
+        --line-color: var(--ion-color-warning);
+    }
+
+    &[color="danger"]::before {
+        --line-color: var(--ion-color-danger);
+    }
+
+    &[color="medium"]::before {
+        --line-color: var(--ion-color-medium);
+    }
+
+    position: relative;
+
+    &::before {
+        content: '';
+        padding-left: 1rem;
+        background-color: var(--line-color);
+
+        position: absolute;
+        top: 0;
+        left: -3px;
+        bottom: 0;
+
+        border-radius: 1rem 0 0 1rem;
+    }
+
+    &>div {
+        position: relative;
+
+        padding: 1rem;
+        background-color: var(--ion-color-light);
+        color: var(--ion-color-light-contrast);
+        border-radius: 1rem;
+    }
+
+    .lst-avatar {
+        ion-avatar {
+            background-color: #fff;
+            box-shadow: 0 0 2px rgba(0, 0, 0, 0.4);
+
+            &:not(:first-child) {
+                margin-left: -0.5rem;
+            }
+        }
+
+        .avatar {
+            background-color: var(--ion-color-medium-tint);
+            color: var(--ion-color-medium-contrast);
+            border-radius: 50%;
+            font-size: 0.75rem;
+
+            &:not(:first-child) {
+                margin-left: -0.5rem;
+            }
+        }
+    }
+}

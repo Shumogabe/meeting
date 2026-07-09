@@ -1,0 +1,64 @@
+.card-document {
+
+    --line-color: var(--ion-color-primary);
+
+    &[color="primary"]::before {
+        --line-color: var(--ion-color-primary);
+    }
+
+    &[color="success"]::before {
+        --line-color: var(--ion-color-success);
+    }
+
+    &[color="warning"]::before {
+        --line-color: var(--ion-color-warning);
+    }
+
+    &[color="danger"]::before {
+        --line-color: var(--ion-color-danger);
+    }
+
+    &[color="medium"]::before {
+        --line-color: var(--ion-color-medium);
+    }
+
+    position: relative;
+
+    &::before {
+        content: '';
+        padding-left: 1rem;
+        background-color: var(--line-color);
+
+        position: absolute;
+        top: 0;
+        left: -3px;
+        bottom: 0;
+
+        border-radius: 1rem 0 0 1rem;
+    }
+
+    &>div {
+        position: relative;
+
+        padding: 1rem;
+        background-color: var(--ion-color-light);
+        color: var(--ion-color-light-contrast);
+        border-radius: 1rem;
+    }
+}
+
+.document-item {
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.5rem;
+
+    border: 1px solid #E6E7EA;
+    background: #F4F4F6;
+}
+
+ion-chip {
+    flex: none;
+
+    ion-label {
+        white-space: nowrap;
+    }
+}

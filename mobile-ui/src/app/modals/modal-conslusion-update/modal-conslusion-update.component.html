@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Cập nhật kết luận</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="modalClose()">
+        <ion-icon color="light" name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  @if(itemData){
+  <div>
+    <div class="fw-600 fs-16 mb-1">Tiêu đề <ion-text color="danger">*</ion-text></div>
+    <ion-textarea mode="md" fill="outline" auto-grow="true" placeholder="Nhập tiêu đề" minlength="6" maxlength="1000" [value]="itemData.title" (ionChange)="changeTitle($event)"></ion-textarea>
+  </div>
+
+  <div class="mt-4">
+    <div class="fw-600 fs-16 mb-1">Nội dung <ion-text color="danger">*</ion-text></div>
+    <ion-textarea mode="md" fill="outline" auto-grow="true" placeholder="Nhập nội dung" minlength="6" maxlength="10000" [value]="itemData.content" (ionChange)="changeContent($event)"></ion-textarea>
+  </div>
+
+  <div class="mt-4">
+    <div class="fs-12 mb-1">Tệp đính kèm</div>
+    @if(itemData.fileUrl){
+    <div class="document-item cursor-pointer" (click)="presentModalDocumentDetail()">
+      <div class="d-flex align-items-start justify-content-between">
+        <div class="d-flex align-items-start">
+          <ion-icon class="fs-20 mr-2" color="medium" src="../../../../assets/icon/document.svg"></ion-icon>
+          <ion-text color="medium">{{itemData.fileOriginalName}}</ion-text>
+        </div>
+        <ion-button class="ion-no-margin btn-remove-content ml-2" color="danger" fill="clear" (click)="removeDocument()">
+          <ion-icon class="fs-20" name="close-outline"></ion-icon>
+        </ion-button>
+      </div>
+    </div>
+    }
+    @else{
+    <ion-button class="ion-no-margin btn-upload" size="small" color="medium" fill="outline" expand="block" (click)="addDocument()">
+      <ion-label>Chọn tập tin</ion-label>
+      <ion-icon class="fs-18" slot="end" name="cloud-upload-outline"></ion-icon>
+    </ion-button>
+    }
+  </div>
+  }
+
+</ion-content>
+
+<ion-footer collapse="fade">
+  <ion-toolbar>
+    <ion-button color="primary" expand="block" (click)="modalSubmit()">
+      <ion-label>Hoàn tất</ion-label>
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

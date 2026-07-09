@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Xem tài liệu</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="modalClose()">
+        <ion-icon color="light" name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <iframe *ngIf="iframeUrl" [src]="iframeUrl|safe:'resourceUrl'" frameborder="0" allowfullscreen webkitallowfullscreen allowtransparency="true" allow="fullscreen" oncontextmenu="return false"></iframe>
+
+</ion-content>
+
+<ion-footer collapse="fade">
+  <ion-toolbar>
+    <ion-button color="primary" expand="block" (click)="downloadDocument()">
+      <ion-label>Tải về</ion-label>
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,75 @@
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+.truongHopSuDungDat_item {
+    display: flex;
+    margin-left: 6px;
+}
+.truongHopSuDungDat_title {
+    font-size: 16px;
+    font-weight: 400;
+}
+.truongHopSuDungDat_item_name {
+    margin-left: 6px;
+    font-size: 14px;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-weight: 400;
+    color: #000000b3;
+    cursor: pointer
+}
+.add-infor{
+    cursor: pointer
+}
+.title_list_item {
+    margin: 0;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-weight: 400;
+    font-size: 0.875rem;
+    line-height: 1.43;
+    letter-spacing: 0.01071em;
+    color: #000000b3;
+    margin-bottom: 5px !important;
+    font-size: 14px;
+}
+.message_error {
+    color: #f44335 !important;
+    margin-top: 5px !important;
+    font-size: 13px;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    line-height: 1.66;
+    letter-spacing: 0.03333em;
+    text-align: left;
+    font-weight: 400;
+    margin-bottom: 0;
+}
+.scrollMarginTop {
+    scroll-margin: 70px;
+}
+
+/* fix placeholder auto uppercase */
+::-webkit-input-placeholder {
+    /* WebKit browsers */
+    text-transform: none;
+}
+
+:-moz-placeholder {
+    /* Mozilla Firefox 4 to 18 */
+    text-transform: none;
+}
+
+::-moz-placeholder {
+    /* Mozilla Firefox 19+ */
+    text-transform: none;
+}
+
+:-ms-input-placeholder {
+    /* Internet Explorer 10+ */
+    text-transform: none;
+}

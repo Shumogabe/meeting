@@ -1,0 +1,23 @@
+ion-segment {
+    ion-segment-button {
+        ion-label {
+            font-size: 0.875rem;
+            text-transform: initial;
+        }
+    }
+}
+
+ion-list {
+    --background: transparent;
+
+    ion-item {
+        --border-radius: 0.5rem;
+        --background: var(--ion-color-light);
+    }
+}
+
+.card-item {
+    background-color: var(--ion-color-light);
+    border-radius: 0.5rem;
+    border: 1px solid var(--ion-color-light-shade);
+}

@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Xem chi tiết biểu quyết</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="modalClose()">
+        <ion-icon color="light" name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+@if(itemData){
+<ion-content class="ion-padding">
+
+  <h5 class="my-0 fw-700">{{itemData.title}}</h5>
+
+  <hr class="border-top my-3" />
+
+  <ul class="my-0">
+    @for(child of itemData.meetingvoted||[]; track child){
+    <li class="mb-2">
+      <ion-note class="text-wrap" color="medium" [innerHTML]="child.title"></ion-note>
+    </li>
+    }
+  </ul>
+
+  <hr class="border-top border-dashed my-3" />
+
+  <div>
+    @if(chart.total){
+    <div>
+      @if(itemData.type){
+      <ejs-chart id="colummn-chart" [title]="chart.title" [primaryXAxis]="chart.primaryXAxis" [primaryYAxis]="chart.primaryYAxis">
+        <e-series-collection>
+          <e-series type="Column" [dataSource]="chart.dataSource" [xName]="chart.xName" [yName]="chart.yName" [name]="chart.name"></e-series>
+        </e-series-collection>
+      </ejs-chart>
+      }
+      @else{
+      <ejs-accumulationchart id="pie-chart" [legendSettings]='chart.legendSettings'>
+        <e-accumulation-series-collection>
+          <e-accumulation-series type="Pie" [dataSource]="chart.dataSource" [xName]="chart.xName" [yName]="chart.yName"></e-accumulation-series>
+        </e-accumulation-series-collection>
+      </ejs-accumulationchart>
+      }
+    </div>
+    }
+    @else {
+    <div class="fs-14">
+      <ion-text color="medium">Chưa có dữ liệu thống kê</ion-text>
+    </div>
+    }
+  </div>
+
+</ion-content>
+}

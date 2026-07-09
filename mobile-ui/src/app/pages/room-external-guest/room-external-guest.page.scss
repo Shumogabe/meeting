@@ -1,0 +1,5 @@
+ion-input {
+    &[fill="outline"] {
+        --border-radius: 0;
+    }
+}

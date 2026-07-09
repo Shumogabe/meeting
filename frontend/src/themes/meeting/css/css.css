@@ -1,0 +1,153 @@
+.swal-modal {
+    width: auto;
+}
+
+#navbar-toggler {
+    display: none;
+}
+
+#meeting-tab,
+#meeting-tab-logo {
+    width: max-content;
+}
+
+#meeting-header {
+    z-index: 100000000;
+}
+
+#navbar-toggler {
+    background: #f5811e;
+}
+
+/* #meeting-tab-logo li a.nav-link {
+    display: block;
+} */
+#toggleShareScreen,
+#toggleHand,
+#toggleParticipantsPane,
+#toggleTileView {
+    display: unset;
+}
+#meeting-document > div.container-fluid > div > div.col.scrollspy > button{
+    display: block;
+}
+@media only screen and (max-width: 1405px) {
+    #meeting-header .col-12 .col-3:first-child {
+        /* flex: 0 0 100%;
+        max-width: 100%; */
+    }
+
+    #meeting-header .col-12 .col-3:last-child {
+        flex: 0 0 100%;
+        max-width: 100%;
+        position: absolute;
+        display: contents;
+    }
+
+    #meeting-header .col-12 .col-6 {
+        flex: 0 0 25%;
+        max-width: 25%;
+    }
+
+    #meeting-tab {
+        display: none;
+    }
+
+    #navbar-toggler {
+        display: unset;
+    }
+
+    #meeting-tab-collapse .nav-item {
+        width: 100%;
+    }
+
+    #meeting-tab-logo li #logo-header {
+        display: none;
+    }
+
+    #toggleShareScreen,
+    #toggleHand,
+    #toggleParticipantsPane,
+    #toggleTileView {
+        display: none;
+    }
+    #meeting-document > div > div > div.col-3{
+        max-width: 73px !important;
+    }
+    #meeting-document > div > div > div.col-3 #v-pills-tab a.nav-link span{
+        display: none;
+    }
+    #meeting-document > div.container-fluid > div > div.col.scrollspy > button{
+        display: none;
+    }
+    #meeting-document > div.container-fluid > div > div.col-3 > div.btn-create-doc > #btn-create > span,
+    #meeting-document > div.container-fluid > div > div.col-3 > div.btn-create-doc > #btn-reload > span{
+        display: none;
+    }
+}
+
+.btn.btn-link.collapsed.card-title.font-weight-bold {
+    background: #0050A6;
+    color: white;
+    pointer-events: none;
+}
+.meeting .page-content #meeting-tabContent #list-example a,
+#meeting-document > div > div > div.col-3 > div > a.nav-link {
+    color: black !important;
+}
+#meeting-document > div > div > div.col-3 > div > a.nav-link.active {
+    background: #adafb1;
+}
+#v-pills-tabContent,
+#meeting-document > div > div > div.col-3 {
+    /* border: 1px solid #adafb1 */
+}
+#meeting-document > div > div > div.col-3{
+    max-width: 300px;
+}
+#meeting-document > div > div > div.col-3 #v-pills-tab{
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+#meeting-document > div > div > div.col-3 #v-pills-tab a.nav-link{
+    max-width: 285px;
+}
+#meeting-document > div > div > div.col-3.dis-content {
+    max-width: 73px;
+}
+#meeting-document > div > div > div.col-3.dis-content #v-pills-tab a.nav-link span{
+    display: none;
+}
+#meeting-document > div.container-fluid > div > div.col-3 > div.btn-create-doc{
+    text-align: center;
+    margin-top: 1rem;
+}
+/* #meeting-document > div.container-fluid > div > div.col.scrollspy{
+    max-width: calc(100% - 300px);
+} */
+#video-doc{
+    width: 100%;
+}
+#meeting-document > div.container-fluid > div > div.col-3.dis-content #v-pills-tab{
+    height: unset !important;
+}
+#meeting-document > div.container-fluid > div > div.col.scrollspy > button > i{
+    border: 2px solid black;
+}
+#meeting-document > div.container-fluid > div > div.col-3.dis-content > div.btn-create-doc > #btn-create > span,
+#meeting-document > div.container-fluid > div > div.col-3.dis-content > div.btn-create-doc > #btn-reload > span{
+    display: none;
+}
+#frame_doc{
+    width: 100%;
+    height: 92vh;
+}
+#img_doc{
+    width: 100%;
+    height: 100%;
+}
+.table td, .table th {
+    vertical-align: inherit;
+}

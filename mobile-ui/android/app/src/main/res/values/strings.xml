@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Monre Meeting</string>
+    <string name="title_activity_main">Monre Meeting</string>
+    <string name="package_name">vn.gov.monre.meeting</string>
+    <string name="custom_url_scheme">vn.gov.monre.meeting</string>
+</resources>

@@ -1,0 +1,74 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button [defaultHref]="'/'" [text]="''"></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>Chi tiết cuộc họp</ion-title>
+
+    <!-- @if(isAddEdit){
+    <ion-buttons slot="end">
+      <ion-button color="light" (click)="modalConfirmDelete?.present()">
+        <ion-icon class="fs-24" src="../../../assets/icon/trash.svg"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    } -->
+  </ion-toolbar>
+
+  <ion-segment mode="md" [scrollable]="true" [value]="tabActive" (ionChange)="changeTab($event)">
+    <ion-segment-button value="info">
+      <ion-label>Thông tin</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="document">
+      <ion-label>Tài liệu</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="vote">
+      <ion-label>Biểu quyết</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="conslusion">
+      <ion-label>Kết luận</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+</ion-header>
+
+<ion-content>
+
+  @if(itemData){
+  @switch (tabActive) {
+  @case ('info'){
+  <app-schedule-info [itemData]="itemData"></app-schedule-info>
+  }
+  @case ('document'){
+  <app-schedule-document [itemData]="itemData" [listData]="itemData.meetingDocument||[]"></app-schedule-document>
+  }
+  @case ('vote'){
+  <app-schedule-vote [itemData]="itemData" [listData]="itemData.meetingVotes||[]"></app-schedule-vote>
+  }
+  @case ('conslusion'){
+  <app-schedule-conslusion [itemData]="itemData" [listData]="itemData.meetingConslusion||[]"></app-schedule-conslusion>
+  }
+  }
+
+  }
+
+  <ion-modal #modalConfirmDelete class="ion-modal-small">
+    <ng-template>
+      <div class="p-4">
+        <div class="text-center">
+          <h4 class="mb-2">Xóa lịch họp</h4>
+          <p class="mb-4 fs-3">Bạn có chắc muốn xóa lịch họp này?</p>
+        </div>
+        <div class="row">
+          <div class="col-6 pr-1">
+            <ion-button color="primary" fill="outline" expand="block" (click)="modalConfirmDelete?.dismiss();">{{'Cancel'|translate}}</ion-button>
+          </div>
+          <div class="col-6 pl-1">
+            <ion-button color="danger" expand="block" (click)="confirmDelete(modalConfirmDelete)">{{'Delete'|translate}}</ion-button>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </ion-modal>
+
+</ion-content>

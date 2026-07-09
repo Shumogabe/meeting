@@ -1,0 +1,268 @@
+.intro__content {
+    /* position: absolute; */
+    /* top: 50%; */
+    /* left: 50%; */
+    /* transform: translate(-50%, -50%); */
+    height: 160px;
+    /* overflow: hidden; */
+    /* font-family: 'Lato', sans-serif; */
+    font-size: 18px;
+    line-height: 40px;
+    color: #226ccc;
+}
+
+.intro__content__container {
+    width: auto;
+    font-weight: 600;
+    overflow: hidden;
+    height: 40px;
+    padding: 0 11px;
+}
+
+.intro__content__container:before {
+    content: '[';
+    left: 0;
+}
+
+.intro__content__container:after {
+    content: ']';
+    position: absolute;
+    right: 0;
+}
+
+.intro__content__container:after,
+.intro__content__container:before {
+    position: absolute;
+    top: 128px;
+    color: #f6811e;
+    /*#16a085;*/
+    font-size: 42px;
+    line-height: 40px;
+    -webkit-animation-name: opacity;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-iteration-count: infinite;
+    animation-name: opacity;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+
+.intro__content__container__text {
+    display: inline;
+    float: left;
+    margin: 0px 1px 86px 0px;
+}
+
+.intro__content__container__list {
+    margin-top: 0;
+    padding-left: 200px;
+    text-align: left;
+    list-style: none;
+    -webkit-animation-name: change;
+    -webkit-animation-duration: 10s;
+    -webkit-animation-iteration-count: infinite;
+    animation-name: change;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+}
+
+.intro__content__container__list__item {
+    line-height: 40px;
+    margin: 0;
+}
+
+@-webkit-keyframes opacity {
+
+    0%,
+    100% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes change {
+
+    0%,
+    22%,
+    100% {
+        transform: translate3d(0, 0, 0);
+    }
+
+    25%,
+    47% {
+        transform: translate3d(0, -33.33%, 0);
+    }
+
+    50%,
+    72% {
+        transform: translate3d(0, -66.66%, 0);
+    }
+
+    75%,
+    97% {
+        transform: translate3d(0, -33.33%, 0);
+    }
+}
+
+@-o-keyframes opacity {
+
+    0%,
+    100% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+@-o-keyframes change {
+
+    0%,
+    22%,
+    100% {
+        transform: translate3d(0, 0, 0);
+    }
+
+    25%,
+    47% {
+        transform: translate3d(0, -33.33%, 0);
+    }
+
+    50%,
+    72% {
+        transform: translate3d(0, -66.66%, 0);
+    }
+
+    75%,
+    97% {
+        transform: translate3d(0, -33.33%, 0);
+    }
+}
+
+@-moz-keyframes opacity {
+
+    0%,
+    100% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+@-moz-keyframes change {
+
+    0%,
+    22%,
+    100% {
+        transform: translate3d(0, 0, 0);
+    }
+
+    25%,
+    47% {
+        transform: translate3d(0, -33.33%, 0);
+    }
+
+    50%,
+    72% {
+        transform: translate3d(0, -66.66%, 0);
+    }
+
+    75%,
+    97% {
+        transform: translate3d(0, -33.33%, 0);
+    }
+}
+
+@keyframes opacity {
+
+    0%,
+    100% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+@keyframes change {
+
+    0%,
+    22%,
+    100% {
+        transform: translate3d(0, 0, 0);
+    }
+
+    25%,
+    47% {
+        transform: translate3d(0, -33.33%, 0);
+    }
+
+    50%,
+    72% {
+        transform: translate3d(0, -66.66%, 0);
+    }
+
+    75%,
+    97% {
+        transform: translate3d(0, -33.33%, 0);
+    }
+}
+
+
+/* 6 is the number of animation.
+ Here, there are 3 lines :
+ 1 to 2
+ 2 to 3
+ 3 to 2
+ 2 to 1
+
+ 4x + 4y = 100 (100% duration)
+ HERE : 
+ y = 3 -> Animation between two lines
+ x = 22 -> Time spent on a line
+
+ You can define a value and calculate the other if you want change speed or the number of lines */
+
+
+#root div div.section.create-room-area div div div:nth-child(1) div p.create-room a {
+    position: absolute;
+    top: 190px
+}
+
+@media only screen and (max-width: 1186px) {
+    .intro__content__container {
+        height: 80px;
+    }
+
+    .intro__content__container__text {
+        margin: 0px 1px 0px 0px;
+        position: relative;
+        z-index: 1;
+        background: linear-gradient(to right, #129466, #4DB072);
+    }
+
+    .intro__content__container__list {
+        margin-top: 40px;
+        padding-left: 48px;
+    }
+
+    .intro__content__container:after,
+    .intro__content__container:before {
+        font-size: 80px;
+        line-height: 80px;
+        /* font-weight: 100; */
+    }
+    #root div div.section.create-room-area div div div:nth-child(1) div p.create-room a {
+        top: 215px
+    }
+    #root div div div div.section.join-room-area div.join-submit div.row{
+        display: flex;
+        flex-direction: column;
+    }
+}

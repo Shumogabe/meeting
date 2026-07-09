@@ -1,0 +1,87 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/" text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>Danh mục biểu quyết</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="refresherChange($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  @if(!listData.length){
+  <div class="py-5">
+    <div class="d-flex align-items-center justify-content-center data-not-found">
+      <div>
+        <div class="d-flex justify-content-center">
+          <ion-img class="w-40" src="../../../assets/image/no-documents.svg"></ion-img>
+        </div>
+        <div class="mt-2 text-center">{{'DataNotFound'|translate}}</div>
+      </div>
+    </div>
+  </div>
+  }
+  @else {
+  <div class="ion-padding">
+    <ng-container [ngTemplateOutlet]="templateList"></ng-container>
+  </div>
+  }
+
+  <ion-infinite-scroll (ionInfinite)="infiniteChange($event)" *ngIf="paging.active">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>
+
+<ng-template #templateList>
+  @for(item of listData; track item){
+  <div class="mb-2">
+    <ng-container [ngTemplateOutlet]="templateVote" [ngTemplateOutletContext]="{ $implicit: item }"></ng-container>
+  </div>
+  }
+</ng-template>
+
+<ng-template #templateVote let-item>
+  <div class="card-vote cursor-pointer" [attr.color]="item.end?'medium':'primary'" (click)="presentModalVoteDetail(item.id)">
+    <div>
+      <div class="d-flex align-items-center justify-content-between">
+        @if(item.type){
+        <ion-text class="fs-14" color="primary">Chọn nhiều</ion-text>
+        }
+        @else{
+        <ion-text class="fs-14" color="primary">Chọn một</ion-text>
+        }
+
+        @if(item.end){
+        <ion-chip color="medium" class="ion-no-margin fs-10 min-h-20 py-0 no-opacity">
+          <ion-label>Đã kết thúc</ion-label>
+        </ion-chip>
+        }
+        @else {
+        <ion-chip color="warning" class="ion-no-margin fs-10 min-h-20 py-0 no-opacity">
+          <ion-label>Đang biểu quyết</ion-label>
+        </ion-chip>
+        }
+      </div>
+
+      <hr class="border-top mt-3 mb-2" />
+
+      <div>
+        <div>
+          <b>{{item.title}}</b>
+        </div>
+        <div class="mt-2">
+          <ul class="my-0">
+            @for(child of item.meetingvoted||[]; track child){
+            <li class="mb-2">
+              <ion-note class="text-wrap" color="medium" [innerHTML]="child.title"></ion-note>
+            </li>
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>

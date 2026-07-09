@@ -1,0 +1,65 @@
+body,
+html {
+    margin: 0px;
+    padding: 0px;
+    -webkit-font-smoothing: antialiased;
+    text-size-adjust: none;
+    width: 100% !important;
+}
+
+table td,
+table {}
+
+#outlook a {
+    padding: 0px;
+}
+
+.ExternalClass,
+.ExternalClass p,
+.ExternalClass span,
+.ExternalClass font,
+.ExternalClass td,
+.ExternalClass div {
+    line-height: 100%;
+}
+
+.ExternalClass {
+    width: 100%;
+}
+
+@media only screen and (max-width: 480px) {
+
+    table,
+    table tr td,
+    table td {
+        width: 100%;
+    }
+
+    table tr td table.edsocialfollowcontainer {
+        width: auto;
+    }
+
+    img {
+        width: inherit;
+    }
+
+    .layer_2 {
+        max-width: 100% !important;
+    }
+
+    .edsocialfollowcontainer table {
+        max-width: 25% !important;
+    }
+
+    .edsocialfollowcontainer table td {
+        padding: 10px !important;
+    }
+
+    .edsocialfollowcontainer table {
+        max-width: 25% !important;
+    }
+
+    .edsocialfollowcontainer table td {
+        padding: 10px !important;
+    }
+}

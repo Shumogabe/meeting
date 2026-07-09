@@ -1,0 +1,36 @@
+#navbarSupportedContent ul.form-inline.navbar-nav div {
+    cursor: pointer;
+}
+#navbarSupportedContent  ul.form-inline.navbar-nav  div  div.dropdown-menu{
+    border-radius: 10px;
+}
+#navbarSupportedContent  ul.form-inline.navbar-nav  li:nth-child(2)  div  div  a.dropdown-item:nth-child(1),
+#navbarSupportedContent  ul.form-inline.navbar-nav  li:nth-child(2)  div  div  a.dropdown-item:nth-child(2),
+#navbarSupportedContent  ul.form-inline.navbar-nav  li:nth-child(6)  div  div  a.dropdown-item:nth-child(1){
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+#navbarSupportedContent  ul.form-inline.navbar-nav  li:nth-child(2)  div  div  a.dropdown-item:nth-child(1):hover,
+#navbarSupportedContent  ul.form-inline.navbar-nav  li:nth-child(2)  div  div  a.dropdown-item:nth-child(2):hover,
+#navbarSupportedContent  ul.form-inline.navbar-nav  li:nth-child(6)  div  div  a.dropdown-item:nth-child(1):hover{
+    background-color: #226ccc;
+    border-radius: 10px;
+    color: #fff;
+}
+#schedule-create{
+    top: 60px;
+}
+#schedule-create div div div div.modal-body.p-0 div.card.card-primary.card-outline.card-outline-tabs div.card-header.p-0.border-bottom-0{
+    padding: 0 !important;
+}
+.MuiButtonBase-root.MuiTab-root.MuiTab-labelIcon.MuiTab-textColorPrimary.css-h0q0iv-MuiButtonBase-root-MuiTab-root{
+    padding: 0 10px 0 10px !important;
+    margin: -12px 0;
+}
+@media (min-width: 992px) {
+    #dropdownMenuButton1{
+        text-overflow: ellipsis;
+        /* width: 125px; */
+        overflow: hidden;
+    }
+  }

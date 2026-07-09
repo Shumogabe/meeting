@@ -1,0 +1,84 @@
+ion-segment {
+    ion-segment-button {
+        ion-label {
+            font-size: 0.875rem;
+            text-transform: initial;
+        }
+    }
+}
+
+ion-chip {
+    flex: none;
+
+    ion-label {
+        white-space: nowrap;
+    }
+}
+
+ion-list {
+    --background: transparent;
+
+    ion-item {
+        &:not(:last-child) {
+            margin-bottom: 0.5rem;
+        }
+
+        --border-radius: 8px;
+        --background: var(--ion-color-light);
+    }
+}
+
+.card-vote {
+    --line-color: var(--ion-color-primary);
+
+    &[color="primary"]::before {
+        --line-color: var(--ion-color-primary);
+    }
+
+    &[color="success"]::before {
+        --line-color: var(--ion-color-success);
+    }
+
+    &[color="warning"]::before {
+        --line-color: var(--ion-color-warning);
+    }
+
+    &[color="danger"]::before {
+        --line-color: var(--ion-color-danger);
+    }
+
+    &[color="medium"]::before {
+        --line-color: var(--ion-color-medium);
+    }
+
+    position: relative;
+
+    &::before {
+        content: '';
+        padding-left: 1rem;
+        background-color: var(--line-color);
+
+        position: absolute;
+        top: 0;
+        left: -3px;
+        bottom: 0;
+
+        border-radius: 1rem 0 0 1rem;
+    }
+
+    &>div {
+        position: relative;
+
+        padding: 1rem;
+        background-color: var(--ion-color-light);
+        color: var(--ion-color-light-contrast);
+        border-radius: 1rem;
+    }
+
+    ul {
+        list-style: upper-alpha;
+        padding: 0 0 0 1rem;
+
+        li {}
+    }
+}

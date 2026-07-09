@@ -1,0 +1,81 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/" text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>Thông tin cấu hình</ion-title>
+    <ion-buttons slot="end">
+      <ion-button color="light" (click)="modalConfirmDelete?.present()">
+        <ion-icon class="fs-24" src="../../../assets/icon/trash.svg"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  @if(itemData){
+
+  <div class="mb-4">
+    <div class="mb-1 fs-14 fw-300">Mô tả</div>
+    <ion-item lines="none" color="light">
+      <ion-label>{{itemData.label_vn}}</ion-label>
+    </ion-item>
+  </div>
+
+  <div class="mb-4">
+    <div class="mb-1 fs-14 fw-300">Mô tả (EN)</div>
+    <ion-item lines="none" color="light">
+      <ion-label>{{itemData.label_en}}</ion-label>
+    </ion-item>
+  </div>
+
+  <div class="mb-4">
+    <div class="mb-1 fs-14 fw-300">Giá trị</div>
+    <ion-item lines="none" color="light">
+      <ion-label>{{itemData.value}}</ion-label>
+    </ion-item>
+  </div>
+
+  <div class="mb-4">
+    <div class="mb-1 fs-14 fw-300">Áp dụng</div>
+    @if(itemData.status){
+    <ion-chip class="no-opacity" color="success">
+      <ion-label>Đang áp dụng</ion-label>
+    </ion-chip>
+    }
+    @else {
+    <ion-chip class="no-opacity" color="warning">
+      <ion-label>Không áp dụng</ion-label>
+    </ion-chip>
+    }
+  </div>
+
+  }
+
+  <ion-modal #modalConfirmDelete class="ion-modal-small">
+    <ng-template>
+      <div class="p-4">
+        <div class="text-center">
+          <h4 class="mb-2">Xóa cấu hình</h4>
+          <p class="mb-4 fs-3">Bạn có chắc muốn xóa cấu hình này?</p>
+        </div>
+        <div class="row">
+          <div class="col-6 pr-1">
+            <ion-button color="primary" fill="outline" expand="block" (click)="modalConfirmDelete?.dismiss();">{{'Cancel'|translate}}</ion-button>
+          </div>
+          <div class="col-6 pl-1">
+            <ion-button color="danger" expand="block" (click)="confirmDelete(modalConfirmDelete)">{{'Delete'|translate}}</ion-button>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </ion-modal>
+</ion-content>
+
+<ion-footer collapse="fade">
+  <ion-toolbar>
+    <ion-button color="primary" expand="block" (click)="presentModalOptionUpdate()">
+      <ion-label>Cập nhật cấu hình</ion-label>
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

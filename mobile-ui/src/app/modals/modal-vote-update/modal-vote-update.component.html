@@ -1,0 +1,74 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Cập nhật biểu quyết</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="modalClose()">
+        <ion-icon color="light" name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <div>
+    <div class="fw-600 fs-16 mb-1">Chủ đề biểu quyết <ion-text color="danger">*</ion-text></div>
+    <ion-textarea mode="md" fill="outline" auto-grow="true" clear-input="true" placeholder="Nhập chủ đề biểu quyết" minlength="6" maxlength="1000" [value]="dataForm.title" (ionChange)="changeTitle($event)"></ion-textarea>
+  </div>
+
+  <div class="mt-4">
+    <div class="fw-600 fs-16 mb-1">Nội dung biểu quyết</div>
+
+    <ul class="m-0">
+      @for(child of dataMeetingvoted; track child){
+      <li class="mb-3">
+        <div class="d-flex align-items-start">
+          <ion-textarea class="flex-grow-1" mode="md" fill="outline" auto-grow="true" placeholder="Nhập nội dung biểu quyết" minlength="6" maxlength="1000" [value]="child.title" (ionChange)="changeContent($event,child.id)"></ion-textarea>
+
+          @if((dataForm.meetingvoted?.length??0) > 2){
+          <ion-button class="ion-no-margin btn-remove-content ml-2" color="danger" (click)="removeContent(child.id)">
+            <ion-icon class="fs-18" src="../../../assets/icon/trash.svg"></ion-icon>
+          </ion-button>
+          }
+        </div>
+      </li>
+      }
+    </ul>
+
+    <div>
+      <ion-button class="ion-no-margin btn-add-content" size="small" color="medium" fill="outline" expand="block" (click)="addContent()">
+        <ion-label>Thêm nội dung biểu quyết</ion-label>
+        <ion-icon slot="end" name="add-outline"></ion-icon>
+      </ion-button>
+    </div>
+  </div>
+
+
+  <div class="mt-4">
+    <div class="fw-600 fs-16 mb-2">Hình thức biểu quyết</div>
+
+    <ion-radio-group mode="md" [value]="dataForm.type" (ionChange)="changeType($event)">
+      <div class="mb-3">
+        <ion-radio [value]="false" labelPlacement="end">
+          <ion-label>Chọn một</ion-label>
+          <ion-note class="ml-2" color="medium">(Cho phép người dùng chỉ chọn một trong số các lựa chọn)</ion-note>
+        </ion-radio>
+      </div>
+      <div class="mb-3">
+        <ion-radio [value]="true" labelPlacement="end">
+          <ion-label>Chọn nhiều</ion-label>
+          <ion-note class="ml-2" color="medium">(Cho phép người dùng chọn một hoặc nhiều tuỳ chọn trong số các lựa chọn)</ion-note>
+        </ion-radio>
+      </div>
+    </ion-radio-group>
+  </div>
+
+</ion-content>
+
+<ion-footer collapse="fade">
+  <ion-toolbar>
+    <ion-button color="primary" expand="block" (click)="modalSubmit()">
+      <ion-label>Hoàn tất</ion-label>
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

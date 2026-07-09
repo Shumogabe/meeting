@@ -1,0 +1,4 @@
+﻿namespace HTT.Api.Helpers
+{
+
+}

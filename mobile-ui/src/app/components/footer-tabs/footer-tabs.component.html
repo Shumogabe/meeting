@@ -1,0 +1,70 @@
+<ion-footer>
+  <ion-toolbar>
+
+    <ion-tab-bar class="px-0">
+
+      <ion-tab-button (click)="navigateByUrl(APP_ROUTE.DASHBOARD)" [class]="routerUrl==APP_ROUTE.DASHBOARD?'tab-selected':''">
+        <ion-icon class="fs-24" src="../../../assets/icon/activity.svg"></ion-icon>
+        <ion-label>{{'Activity'|translate}}</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button (click)="navigateByUrl(APP_ROUTE.SCHEDULE)" [class]="routerUrl==APP_ROUTE.SCHEDULE?'tab-selected':''">
+        <ion-icon class="fs-24" name="calendar-outline"></ion-icon>
+        <ion-label>{{'MeetingSchedule'|translate}}</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button (click)="modalCreateMeeting?.present()">
+        <ion-icon class="fs-52" src="../../../assets/image/tab-bar/meeting.svg"></ion-icon>
+        <ion-label>{{'CreateMeeting'|translate}}</ion-label>
+      </ion-tab-button>
+
+      <!-- <ion-tab-button (click)="navigateByUrl(APP_ROUTE.VOTE_ROOM)" [class]="routerUrl==APP_ROUTE.VOTE_ROOM?'tab-selected':''">
+        <ion-icon class="fs-24" name="reader-outline"></ion-icon>
+        <ion-label>{{'MeetingVote'|translate}}</ion-label>
+      </ion-tab-button> -->
+
+      <ion-tab-button (click)="navigateByUrl(APP_ROUTE.DOCUMENT_ROOM)" [class]="routerUrl==APP_ROUTE.DOCUMENT_ROOM?'tab-selected':''">
+        <ion-icon class="fs-24" name="folder-outline"></ion-icon>
+        <ion-label>{{'MeetingDocument'|translate}}</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button (click)="navigateByUrl(APP_ROUTE.USER)" [class]="routerUrl==APP_ROUTE.USER?'tab-selected':''">
+        <ion-icon class="fs-24" name="person-outline"></ion-icon>
+        <ion-label>{{'User'|translate}}</ion-label>
+      </ion-tab-button>
+
+    </ion-tab-bar>
+
+  </ion-toolbar>
+</ion-footer>
+
+<ion-modal #modalCreateMeeting class="ion-modal-small">
+  <ng-template>
+    <ion-header class="ion-no-border">
+      <ion-toolbar color="transparent">
+        <ion-buttons slot="end">
+          <ion-button (click)="modalCreateMeeting?.dismiss()">
+            <ion-icon name="close-outline"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+    <div class="ion-padding pt-0">
+      <div class="text-center">
+        <h4 class="mt-0 mb-4 fw-700">Tạo phòng họp</h4>
+      </div>
+      <div>
+        <ion-button color="primary" expand="block" (click)="modalCreateMeeting?.dismiss();presentModalScheduleAdd();">
+          <ion-label>Tạo nhanh phòng họp</ion-label>
+          <ion-icon class="fs-24" slot="end" src="../../../assets/icon/monitor-camera.svg"></ion-icon>
+        </ion-button>
+        @if(Role.checkRole(userRoles,Role.SCHEDULE)){
+        <ion-button color="primary" fill="outline" expand="block" (click)="modalCreateMeeting?.dismiss();presentModalScheduleAddAdvance();">
+          <ion-label>Thêm lịch họp mới</ion-label>
+          <ion-icon class="fs-24" slot="end" src="../../../assets/icon/calendar-add.svg"></ion-icon>
+        </ion-button>
+        }
+      </div>
+    </div>
+  </ng-template>
+</ion-modal>

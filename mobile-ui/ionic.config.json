@@ -1,0 +1,7 @@
+{
+  "name": "meeting-app",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
